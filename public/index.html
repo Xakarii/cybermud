@@ -50,15 +50,27 @@
     overflow: hidden; /* Prevents rogue text elements from leaking downwards */
   }
 
-  /* Right Side: Scrollable text logs screen channel console log */
+   /* Right Side: Scrollable text logs screen channel console log */
+  #screen { 
+    flex: 1;
+    padding: 12px; 
+    overflow-y: auto;            /* Forces scrollbars to appear here inside the container */
+    max-height: 100%;            /* Restricts the window from stretching the page boundaries */
+    box-sizing: border-box;       /* Keeps paddings cleanly calculated inside constraints */
+    white-space: pre-wrap;        /* Allows long global logs messages to wrap nicely */
+    font-size: 14px; 
+    line-height: 1.3; 
+  }
+  /* Old screen   Right Side: Scrollable text logs screen channel console log
   #screen { 
     flex: 1;
     padding: 12px; 
     overflow-y: auto; 
-    white-space: pre-wrap; /* Allows long global logs messages to wrap nicely */
+    white-space: pre-wrap; /* Allows long global logs messages to wrap nicely 
     font-size: 14px; 
     line-height: 1.3; 
   }
+  */
 
   #screen::-webkit-scrollbar { width: 8px; } 
   #screen::-webkit-scrollbar-thumb { background: #ff2f8e; }
