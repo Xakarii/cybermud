@@ -87,6 +87,39 @@ export class World {
     return p;
   }
 
+  // ---- random enemy encounters ----
+  spawnEncounter(p, x, y) {
+    const area = this.areas.get(p.area);
+    if (!area) return;
+
+    const drone = {
+      id: nextId++,
+      isMob: true,
+      name: 'Arasaka-Drone',
+      area: p.area,
+      x: x,
+      y: y,
+      hp: 35,
+      maxHp: 35,
+      damage: 10,
+      nextActionTime: Date.now() + 1000 // 1 second before its first attack tick
+    };
+
+    // Initialize the mobs array if it doesn't exist, then add the drone
+    if (!area.mobs) area.mobs = [];
+    area.mobs.push(drone);
+
+    // Notify the player
+    this.send(p, '\x1b[31m[WARNING] A security drone drops from a neon billboard, weapons armed!\x1b[0m');
+    
+    // Automatically set the player's combat target to this drone's ID for convenience
+    p.target = drone.id;
+    this.send(p, `\x1b[33mTarget locked onto ${drone.name}.\x1b[0m`);
+
+    // Force a map refresh so the player sees the enemy symbol immediately
+    p.dirty = true;
+  }
+
   spawnPlayer(p) {
     this.send(p, `\x1b[32mWelcome to Night City, ${p.name}.${p.admin ? ' [BUILDER MODE]' : ''}\x1b[0m`);
     p.dirty = true;
@@ -141,6 +174,18 @@ export class World {
     if (t.blocked) { this.send(p, '\x1b[31mSomething solid blocks the way.\x1b[0m'); return; }
     p.x = nx; p.y = ny;
     p.dirty = true;
+
+    // --- ENCOUNTER TRIGGER HOOK ---
+    // If stepping into a neon alleyway, run a 15% chance to trigger a drone ambush
+    if (t.glyph === ',') {
+      const area = this.areas.get(p.area);
+      // Only spawn an ambush if there isn't already a living drone on this exact tile
+      const droneExists = (area.mobs || []).some(m => m.x === nx && m.y === ny && m.hp > 0);
+      
+      if (!droneExists && Math.random() < 0.15) {
+        this.spawnEncounter(p, nx, ny);
+      }
+    }
   }
   // ---- ASCII viewport render ----
   /*  Old sendView function
@@ -176,6 +221,8 @@ export class World {
         if (x === p.x && y === p.y) { row += '\x1b[93m@\x1b[0m'; continue; }
         const occupant = [...this.players].find(o => o.area === p.area && o.x === x && o.y === y);
         if (occupant) { row += '\x1b[91mP\x1b[0m'; continue; }
+        const mobOccupant = (area.mobs || []).find(m => m.x === x && m.y === y && m.hp > 0);
+        if (mobOccupant) { row += '\x1b[38;5;196mD\x1b[0m'; continue; } // Red 'D' for Drone
         const t = area.tiles[`${x},${y}`];
         row += t ? this._glyphColor(t.glyph) : ' ';
       }
