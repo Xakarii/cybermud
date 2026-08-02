@@ -46,8 +46,22 @@ export function handleCommand(world, p, line) {
   }
 
   if (cmd === 'target' || cmd === 't') {
-    const tgt = [...world.players].find(o => o !== p && o.area === p.area && o.name?.toLowerCase() === arg.toLowerCase());
+    const area = world.areas.get(p.area);
+    
+    // 1. LOOK UP TARGET BY HANDLE NAME (Check players first, then mobs)
+    let tgt = [...world.players].find(o => o !== p && o.area === p.area && o.name?.toLowerCase() === arg.toLowerCase());
+    if (!tgt && area && area.mobs) {
+      tgt = area.mobs.find(m => m.hp > 0 && m.name.toLowerCase() === arg.toLowerCase());
+    }
+
     if (!tgt) return world.send(p, '\x1b[31mNo such target in range.\x1b[0m');
+
+    // 2. CHECK IF ALREADY TARGETED
+    if (p.target === tgt.id) {
+      return world.send(p, `\x1b[33mYou are already targeting the ${tgt.name}.\x1b[0m`);
+    }
+
+    // 3. SET NEW COMBAT TARGET LOCK
     p.target = tgt.id;
     return world.send(p, `\x1b[33mTargeting ${tgt.name}.\x1b[0m`);
   }

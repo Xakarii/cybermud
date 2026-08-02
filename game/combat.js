@@ -112,21 +112,41 @@ export function startFire(world, p, hand) {
 
 // hook for damage-over-time, cooldowns, mob AI, etc.
 export function tickCombat(world, now) {
-  const area = world.areas.get('downtown');
-  if (!area || !area.mobs) return;
+  for (const [areaName, area] of world.areas.entries()) {
+    if (!area.mobs || area.mobs.length === 0) continue;
 
-  // Let spawned mobs process an AI routine
-  area.mobs.forEach(mob => {
-    if (now < mob.nextActionTime) return;
+    const activeDrones = area.mobs.filter(m => m.hp > 0 && now >= m.nextActionTime);
 
-    // AI Check: If a player is standing on the same tile, attack them!
-    const targetPlayer = [...world.players].find(p => p.area === mob.area && p.x === mob.x && p.y === mob.y);
-    if (targetPlayer && targetPlayer.hp > 0) {
-      const dmg = 5 + Math.floor(Math.random() * 5);
-      targetPlayer.hp -= dmg;
-      world.send(targetPlayer, `\x1b[31mAn automated defense turret tracks you and fires for ${dmg} damage!\x1b[0m`);
-      targetPlayer.dirty = true;
-      mob.nextActionTime = now + 1500; // 1.5-second attack cooldown
+    for (const drone of activeDrones) {
+      // CRITICAL CRASH SAFETY SHIELD CHECK: 
+      // If the drone flatlined earlier in this exact tick cycle, skip it instantly!
+      if (drone.hp <= 0) continue; 
+
+      const targetPlayer = [...world.players].find(p => p.area === drone.area && p.x === drone.x && p.y === drone.y && p.hp > 0);
+
+      if (targetPlayer) {
+        // ... your damage execution logic blocks below stay exactly the same ...
+        const minDmg = drone.damage[0];
+        const maxDmg = drone.damage[1];
+        const dmg = minDmg + Math.floor(Math.random() * (maxDmg - minDmg + 1));
+
+        targetPlayer.hp -= dmg;
+        world.send(targetPlayer, `\x1b[91mThe Arasaka-Drone whirs loudly and shoots you for ${dmg} damage!\x1b[0m`);
+        targetPlayer.dirty = true;
+        drone.nextActionTime = now + 1500;
+
+        if (targetPlayer.hp <= 0) {
+          world.broadcastArea(targetPlayer.area, 0, 0, `\x1b[95m${targetPlayer.name} was flatlined by an Arasaka-Drone.\x1b[0m`);
+          targetPlayer.hp = targetPlayer.maxHp;
+          targetPlayer.x = 2; targetPlayer.y = 2; targetPlayer.target = null; targetPlayer.queue = [];
+          world.send(targetPlayer, `\x1b[31m[CRITICAL] System failure. Rebooting vital matrices... Spawning at Safehouse.\x1b[0m`);
+          drone.hp = 0; 
+        }
+      } else {
+        drone.nextActionTime = now + 500;
+      }
     }
-  });
+
+    area.mobs = area.mobs.filter(m => m.hp > 0);
+  }
 }
