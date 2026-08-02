@@ -1,5 +1,7 @@
 import fs from 'fs';
 import path from 'path';
+import { MAPS } from './maps.js';
+
 let nextId = 1;
 export class World {
   constructor() {
@@ -16,6 +18,39 @@ export class World {
     }
     if (this.areas.size === 0) this._makeDefaultArea(dir);
   }
+
+   _makeDefaultArea(dir) {
+    const mapBlueprint = MAPS.downtown;
+    
+    const area = {
+      name: mapBlueprint.name,
+      width: mapBlueprint.grid[0].length, // Automatically grabs width from string length
+      height: mapBlueprint.grid.length,    // Automatically grabs height from array length
+      _file: path.join(dir, 'downtown.json'),
+      tiles: {},
+      mobs: []
+    };
+
+    // Cycle through rows (Y axis) and columns (X axis) to convert the visual text grid
+    for (let y = 0; y < area.height; y++) {
+      for (let x = 0; x < area.width; x++) {
+        const glyph = mapBlueprint.grid[y][x];
+        const template = mapBlueprint.legend[glyph] || { name: 'Void', desc: 'Empty space.', blocked: true };
+        
+        // Match your engine's exact "x,y" string dictionary key data blueprint style
+        area.tiles[`${x},${y}`] = {
+          glyph: glyph,
+          name: template.name,
+          desc: template.desc,
+          blocked: template.blocked
+        };
+      }
+    }
+
+    this.areas.set(area.name, area);
+    this.saveArea(area);
+  }
+  /* old makeDefaultArea loop
   _makeDefaultArea(dir) {
     const area = {
       name: 'downtown', width: 20, height: 20,
@@ -31,11 +66,13 @@ export class World {
     for (let x = 5; x < 15; x++) { area.tiles[`${x},10`].glyph = '#'; area.tiles[`${x},10`].blocked = true; area.tiles[`${x},10`].name = 'Chrome wall'; }
     this.areas.set(area.name, area);
     this.saveArea(area);
-  }
+  } */
+
   saveArea(area) {
     const { _file, ...clean } = area;
     fs.writeFileSync(area._file, JSON.stringify(clean, null, 2));
   }
+
   // ---- players ----
   createPlayer(ws) {
     const p = {
@@ -153,10 +190,20 @@ export class World {
     // Fire off ONE single network packet instead of two loose ones!
     this.send(p, mapGridText + infoFooterText);
   }
-
+  
+  _glyphColor(g) {
+    if (g === '#') return `\x1b[37m#\x1b[0m`; // White walls
+    if (g === '.') return `\x1b[90m.\x1b[0m`; // Gray asphalt
+    if (g === '~') return `\x1b[32m~\x1b[0m`; // Vibrant green sludge pools!
+    if (g === '=') return `\x1b[91m=\x1b[0m`; // Red hazardous laser barricades!
+    return g;
+  }
+  
+  /* old _glyphColor function
   _glyphColor(g) {
     if (g === '#') return `\x1b[37m#\x1b[0m`;
     if (g === '.') return `\x1b[90m.\x1b[0m`;
     return g;
   }
+  */
 }

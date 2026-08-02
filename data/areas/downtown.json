@@ -4,2404 +4,2404 @@
   "height": 20,
   "tiles": {
     "0,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,1": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,10": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "0,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
     },
     "1,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "2,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "3,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "4,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "5,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "6,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "7,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "8,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "9,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "10,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "11,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "12,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "13,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "14,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "15,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "16,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "17,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "18,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "19,0": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,1": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
     },
     "1,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,10": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "1,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "2,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,10": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "2,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "3,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,10": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "3,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "4,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,10": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "4,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "5,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,10": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": true
-    },
-    "5,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "5,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "6,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,10": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": true
-    },
-    "6,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "6,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "7,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,10": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": true
-    },
-    "7,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "7,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "8,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,10": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": true
-    },
-    "8,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "8,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "9,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,10": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": true
-    },
-    "9,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "9,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "10,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,10": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": true
-    },
-    "10,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "10,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "11,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,10": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": true
-    },
-    "11,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "11,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "12,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,10": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": true
-    },
-    "12,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "12,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "13,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,10": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": true
-    },
-    "13,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "13,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "14,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,10": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": true
-    },
-    "14,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "14,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "15,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,10": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "15,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "16,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,10": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "16,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "17,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,10": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "17,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "18,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,1": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,1": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,2": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,2": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "4,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "5,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "6,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "7,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "8,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "9,2": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,2": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "12,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "13,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "14,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "15,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "16,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "17,2": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,2": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,2": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,3": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,3": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "4,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "6,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "7,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "8,3": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "9,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,3": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "12,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "13,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "14,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "15,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,3": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "17,3": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,3": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,3": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,4": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,4": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "4,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "6,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "7,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "8,4": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "9,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,4": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "12,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "13,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "14,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "15,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,4": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "17,4": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,4": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,4": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,5": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,5": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,5": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,5": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "4,5": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "5,5": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "6,5": {
+      "glyph": "=",
+      "name": "Laser Gate",
+      "desc": "A humming matrix of security fields. Looks impassable.",
+      "blocked": true
+    },
+    "7,5": {
+      "glyph": "=",
+      "name": "Laser Gate",
+      "desc": "A humming matrix of security fields. Looks impassable.",
+      "blocked": true
+    },
+    "8,5": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "9,5": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,5": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,5": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "12,5": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "13,5": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "14,5": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "15,5": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,5": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "17,5": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,5": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,5": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,6": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "4,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "6,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "7,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "8,6": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "9,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,6": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "12,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "13,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "14,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "15,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,6": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "17,6": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,6": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,6": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "2,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "3,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "4,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "5,7": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "6,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "7,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "8,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "9,7": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,7": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "12,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "13,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "14,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "15,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "16,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "17,7": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,7": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,7": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,8": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "4,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "6,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "7,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "8,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "9,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "12,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "13,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "14,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "15,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "17,8": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,8": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,8": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,9": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "4,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "6,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "7,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "8,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "9,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "12,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "13,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "14,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "15,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "17,9": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,9": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,9": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,10": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,10": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,10": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,10": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "4,10": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,10": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "6,10": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "7,10": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "8,10": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "9,10": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "10,10": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "11,10": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "12,10": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "13,10": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "14,10": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "15,10": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,10": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "17,10": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,10": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,10": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,11": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,11": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,11": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,11": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "4,11": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,11": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "6,11": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "7,11": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "8,11": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "9,11": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "10,11": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "11,11": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "12,11": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "13,11": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "14,11": {
+      "glyph": "~",
+      "name": "Chemical Sludge",
+      "desc": "Sizzling green industrial runoff. Smells like sulfur.",
+      "blocked": false
+    },
+    "15,11": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,11": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "17,11": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,11": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,11": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,12": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "4,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "6,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "7,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "8,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "9,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "12,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "13,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "14,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "15,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "17,12": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,12": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
-    "18,13": {
+    "19,12": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "2,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "3,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "4,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "5,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "6,13": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "7,13": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "8,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "9,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "10,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "11,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "12,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "13,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "14,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "15,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "16,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "17,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "18,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "19,13": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,14": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "4,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "6,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "7,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "8,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "9,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "12,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "13,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "14,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "15,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "17,14": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,14": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,14": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,15": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,15": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,15": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,15": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "4,15": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,15": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "6,15": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "7,15": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "8,15": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "9,15": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "10,15": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "11,15": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "12,15": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "13,15": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "14,15": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "15,15": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,15": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "17,15": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,15": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,15": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,16": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "4,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,16": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "6,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "7,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "8,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "9,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "12,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "13,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "14,16": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "15,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "17,16": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,16": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,16": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,17": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "4,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,17": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "6,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "7,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "8,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "9,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "12,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "13,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "14,17": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "15,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "17,17": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,17": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "19,17": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,18": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "2,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "3,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "4,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "5,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "6,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "7,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "8,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "9,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "10,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "11,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "12,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "13,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "14,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "15,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "16,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
+      "blocked": false
+    },
+    "17,18": {
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "18,18": {
       "glyph": ".",
       "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "18,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,0": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,1": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,2": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,3": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,4": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,5": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,6": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,7": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,8": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,9": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,10": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,11": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,12": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,13": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,14": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,15": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,16": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
-    },
-    "19,17": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
+      "desc": "Neon reflects in puddles of toxic rain.",
       "blocked": false
     },
     "19,18": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "0,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "1,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "2,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "3,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "4,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "5,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "6,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "7,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "8,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "9,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "10,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "11,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "12,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "13,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "14,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "15,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "16,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "17,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
+    },
+    "18,19": {
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
     },
     "19,19": {
-      "glyph": ".",
-      "name": "Cracked asphalt",
-      "desc": "Neon reflects in puddles of rain.",
-      "blocked": false
+      "glyph": "#",
+      "name": "Chrome wall",
+      "desc": "A towering corporate barrier made of dark glass.",
+      "blocked": true
     }
   },
   "mobs": []
