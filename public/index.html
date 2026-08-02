@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>cyberMUD // Night City</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #0a0a0f; color: #c8f7ff; font-family: 'Courier New', monospace; }
+  #screen { height: calc(100vh - 44px); padding: 8px; overflow-y: auto; white-space: pre; font-size: 14px; line-height: 1.15; }
+  #screen::-webkit-scrollbar { width: 8px; } #screen::-webkit-scrollbar-thumb { background: #ff2f8e; }
+  #bar { display: flex; height: 36px; border-top: 1px solid #ff2f8e; }
+  #prompt { color: #ff2f8e; padding: 0 8px; line-height: 36px; }
+  #input { flex: 1; background: #05050a; color: #7fffd4; border: none; outline: none; font-family: inherit; font-size: 14px; }
+</style>
+</head>
+<body>
+  <div id="screen"></div>
+  <div id="bar"><span id="prompt">▶</span><input id="input" autocomplete="off" autofocus /></div>
+  <script src="client.js"></script>
+</body>
+</html>
