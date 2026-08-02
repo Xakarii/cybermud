@@ -33,5 +33,21 @@ export function startFire(world, p, hand) {
 }
 // hook for damage-over-time, cooldowns, mob AI, etc.
 export function tickCombat(world, now) {
-  // extend here: NPC firing on their own action timers, bleeding, etc.
+  const area = world.areas.get('downtown');
+  if (!area || !area.mobs) return;
+
+  // Let spawned mobs process an AI routine
+  area.mobs.forEach(mob => {
+    if (now < mob.nextActionTime) return;
+
+    // AI Check: If a player is standing on the same tile, attack them!
+    const targetPlayer = [...world.players].find(p => p.area === mob.area && p.x === mob.x && p.y === mob.y);
+    if (targetPlayer && targetPlayer.hp > 0) {
+      const dmg = 5 + Math.floor(Math.random() * 5);
+      targetPlayer.hp -= dmg;
+      world.send(targetPlayer, `\x1b[31mAn automated defense turret tracks you and fires for ${dmg} damage!\x1b[0m`);
+      targetPlayer.dirty = true;
+      mob.nextActionTime = now + 1500; // 1.5-second attack cooldown
+    }
+  });
 }

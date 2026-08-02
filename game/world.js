@@ -87,6 +87,7 @@ export class World {
     p.dirty = true;
   }
   // ---- ASCII viewport render ----
+  /*  Old sendView function
   sendView(p) {
     const area = this.areas.get(p.area);
     const R = 5; // radius -> 11x11 viewport
@@ -106,6 +107,34 @@ export class World {
     this.send(p, rows.join('\n'));
     this.send(p, `\x1b[90m(${p.x},${p.y}) ${here ? here.name : ''}  HP:${p.hp}/${p.maxHp}\x1b[0m`);
   }
+  */
+
+  // ---- ASCII viewport render ----
+  sendView(p) {
+    const area = this.areas.get(p.area);
+    const R = 5; // radius -> 11x11 viewport
+    let rows = [];
+    for (let y = p.y - R; y <= p.y + R; y++) {
+      let row = '';
+      for (let x = p.x - R; x <= p.x + R; x++) {
+        if (x === p.x && y === p.y) { row += '\x1b[93m@\x1b[0m'; continue; }
+        const occupant = [...this.players].find(o => o.area === p.area && o.x === x && o.y === y);
+        if (occupant) { row += '\x1b[91mP\x1b[0m'; continue; }
+        const t = area.tiles[`${x},${y}`];
+        row += t ? this._glyphColor(t.glyph) : ' ';
+      }
+      rows.push(row);
+    }
+    const here = area.tiles[`${p.x},${p.y}`];
+    
+    // BUILD ONE SINGLE STRING WITH ALL DATA MERGED
+    const mapGridText = rows.join('\n');
+    const infoFooterText = `\n\x1b[90m(${p.x},${p.y}) ${here ? here.name : ''}  HP:${p.hp}/${p.maxHp}\x1b[0m`;
+    
+    // Fire off ONE single network packet instead of two loose ones!
+    this.send(p, mapGridText + infoFooterText);
+  }
+
   _glyphColor(g) {
     if (g === '#') return `\x1b[37m#\x1b[0m`;
     if (g === '.') return `\x1b[90m.\x1b[0m`;
