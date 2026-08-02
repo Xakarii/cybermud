@@ -50,23 +50,6 @@ export class World {
     this.areas.set(area.name, area);
     this.saveArea(area);
   }
-  /* old makeDefaultArea loop
-  _makeDefaultArea(dir) {
-    const area = {
-      name: 'downtown', width: 20, height: 20,
-      _file: path.join(dir, 'downtown.json'),
-      // tiles keyed by "x,y" -> { glyph, name, desc, blocked }
-      tiles: {},
-      mobs: [] // { proto } spawns handled at load; simple demo below
-    };
-    for (let x = 0; x < 20; x++)
-      for (let y = 0; y < 20; y++)
-        area.tiles[`${x},${y}`] = { glyph: '.', name: 'Cracked asphalt', desc: 'Neon reflects in puddles of rain.', blocked: false };
-    // a few walls
-    for (let x = 5; x < 15; x++) { area.tiles[`${x},10`].glyph = '#'; area.tiles[`${x},10`].blocked = true; area.tiles[`${x},10`].name = 'Chrome wall'; }
-    this.areas.set(area.name, area);
-    this.saveArea(area);
-  } */
 
   saveArea(area) {
     const { _file, ...clean } = area;
@@ -101,7 +84,7 @@ export class World {
       y: y,
       hp: 35,
       maxHp: 35,
-      damage: 10,
+      damage: [7,12],
       nextActionTime: Date.now() + 1000 // 1 second before its first attack tick
     };
 
@@ -134,13 +117,6 @@ export class World {
       }
     }
   }
-//Use code with c
-  /* old spawnPlayer function
-  spawnPlayer(p) {
-    this.send(p, `\x1b[32mWelcome to Night City, ${p.name}.${p.admin ? ' [BUILDER MODE]' : ''}\x1b[0m`);
-    p.dirty = true;
-  }
-  */
 
   removePlayer(p) { this.players.delete(p); }
   send(p, text) {
@@ -187,28 +163,7 @@ export class World {
       }
     }
   }
-  // ---- ASCII viewport render ----
-  /*  Old sendView function
-  sendView(p) {
-    const area = this.areas.get(p.area);
-    const R = 5; // radius -> 11x11 viewport
-    let rows = [];
-    for (let y = p.y - R; y <= p.y + R; y++) {
-      let row = '';
-      for (let x = p.x - R; x <= p.x + R; x++) {
-        if (x === p.x && y === p.y) { row += '\x1b[93m@\x1b[0m'; continue; }
-        const occupant = [...this.players].find(o => o.area === p.area && o.x === x && o.y === y);
-        if (occupant) { row += '\x1b[91mP\x1b[0m'; continue; }
-        const t = area.tiles[`${x},${y}`];
-        row += t ? this._glyphColor(t.glyph) : ' ';
-      }
-      rows.push(row);
-    }
-    const here = area.tiles[`${p.x},${p.y}`];
-    this.send(p, rows.join('\n'));
-    this.send(p, `\x1b[90m(${p.x},${p.y}) ${here ? here.name : ''}  HP:${p.hp}/${p.maxHp}\x1b[0m`);
-  }
-  */
+
 
   // ---- ASCII viewport render ----
   sendView(p) {
@@ -230,6 +185,11 @@ export class World {
     }
     const here = area.tiles[`${p.x},${p.y}`];
     
+// Scan if there are any active hostile entities standing right on your current index tile
+    const localMobs = (area.mobs || []).filter(m => m.x === p.x && m.y === p.y && m.hp > 0);
+    const mobLabels = localMobs.map(m => `${m.name}(ID:${m.id})`).join(', ');
+    const enemyStatusText = mobLabels ? ` | Enemies: ${mobLabels}` : '';
+
     // BUILD ONE SINGLE STRING WITH ALL DATA MERGED
     const mapGridText = rows.join('\n');
     const infoFooterText = `\n\x1b[90m(${p.x},${p.y}) ${here ? here.name : ''}  HP:${p.hp}/${p.maxHp}\x1b[0m`;

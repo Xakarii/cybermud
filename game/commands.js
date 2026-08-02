@@ -47,23 +47,44 @@ export function handleCommand(world, p, line) {
 
   if (cmd === 'target' || cmd === 't') {
     const area = world.areas.get(p.area);
-    
-    // 1. LOOK UP TARGET BY HANDLE NAME (Check players first, then mobs)
-    let tgt = [...world.players].find(o => o !== p && o.area === p.area && o.name?.toLowerCase() === arg.toLowerCase());
-    if (!tgt && area && area.mobs) {
-      tgt = area.mobs.find(m => m.hp > 0 && m.name.toLowerCase() === arg.toLowerCase());
+    const numericId = parseInt(arg, 10);
+    let tgt = null;
+
+    // 1. Check if the user is passing a specific numeric database ID (e.g., "t 3")
+    if (!Number.isNaN(numericId)) {
+      tgt = [...world.players].find(o => o.id === numericId && o.area === p.area);
+      if (!tgt && area && area.mobs) {
+        tgt = area.mobs.find(m => m.id === numericId && m.hp > 0);
+      }
+    } else {
+      // 2. Otherwise, look up by handle name matching sequence text strings
+      // BEFORE searching the whole area array, check if our CURRENT target matches the name requested!
+      if (p.target) {
+        let currentTgt = [...world.players].find(o => o.id === p.target && o.area === p.area);
+        if (!currentTgt && area && area.mobs) {
+          currentTgt = area.mobs.find(m => m.id === p.target && m.hp > 0);
+        }
+        if (currentTgt && currentTgt.name.toLowerCase() === arg.toLowerCase()) {
+          return world.send(p, `\x1b[33mYou are already targeting the ${currentTgt.name}.\x1b[0m`);
+        }
+      }
+
+      // 3. Standard array scan fallback path if we aren't targeting it yet
+      tgt = [...world.players].find(o => o !== p && o.area === p.area && o.name?.toLowerCase() === arg.toLowerCase());
+      if (!tgt && area && area.mobs) {
+        tgt = area.mobs.find(m => m.hp > 0 && m.name.toLowerCase() === arg.toLowerCase());
+      }
     }
 
     if (!tgt) return world.send(p, '\x1b[31mNo such target in range.\x1b[0m');
 
-    // 2. CHECK IF ALREADY TARGETED
     if (p.target === tgt.id) {
       return world.send(p, `\x1b[33mYou are already targeting the ${tgt.name}.\x1b[0m`);
     }
 
-    // 3. SET NEW COMBAT TARGET LOCK
     p.target = tgt.id;
-    return world.send(p, `\x1b[33mTargeting ${tgt.name}.\x1b[0m`);
+    const idLabel = tgt.isMob ? ` [ID: ${tgt.id}]` : '';
+    return world.send(p, `\x1b[33mTargeting ${tgt.name}${idLabel}.\x1b[0m`);
   }
 
   // ---- look / info (no lag, immediate) ----
