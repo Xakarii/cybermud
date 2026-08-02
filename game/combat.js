@@ -25,11 +25,32 @@ export function startFire(world, p, hand) {
   world.send(p, `\x1b[91mYour ${w.name} tears into ${target.name} for ${dmg}!\x1b[0m`);
   world.send(target, `\x1b[91m${p.name} hits you for ${dmg}! (HP ${target.hp}/${target.maxHp})\x1b[0m`);
   target.dirty = true;
+
+  if (target.hp <= 0) {
+    // 1. Alert the entire area
+    world.broadcastArea(p.area, 0, 0, `\x1b[95m${target.name} flatlines on the wet concrete.\x1b[0m`);
+    
+    // 2. Clear target properties and position variables
+    target.hp = target.maxHp; 
+    target.x = 2; 
+    target.y = 2; 
+    target.target = null; // Clear their old combat lock target
+    target.queue = [];    // Empty out any actions they had queued while dying
+    
+    // 3. Send a clear system alert directly to the dead player
+    world.send(target, `\x1b[31m[CRITICAL] System failure. Rebooting vital matrices... Spawning at Safehouse.\x1b[0m`);
+    
+    // 4. Force their interface dashboard to redraw immediately!
+    target.dirty = true;
+  }
+  /* old death resolution conditional
   if (target.hp <= 0) {
     world.broadcastArea(p.area, 0, 0, `\x1b[95m${target.name} flatlines on the wet concrete.\x1b[0m`);
     target.hp = target.maxHp; target.x = 2; target.y = 2; // respawn
     target.dirty = true;
   }
+  */
+
 }
 // hook for damage-over-time, cooldowns, mob AI, etc.
 export function tickCombat(world, now) {

@@ -49,10 +49,29 @@ export class World {
     this.players.add(p);
     return p;
   }
+
+  spawnPlayer(p) {
+    this.send(p, `\x1b[32mWelcome to Night City, ${p.name}.${p.admin ? ' [BUILDER MODE]' : ''}\x1b[0m`);
+    p.dirty = true;
+    
+    // Broadcast a narrative message to everyone else in the area
+    this.broadcastArea(p.area, p.x, p.y, `\x1b[33m[NET] ${p.name} has jacked into the grid.\x1b[0m`, p);
+    
+    // Force everyone else's map viewport to update immediately so they see the new player symbol!
+    for (const other of this.players) {
+      if (other.area === p.area && other !== p) {
+        other.dirty = true;
+      }
+    }
+  }
+//Use code with c
+  /* old spawnPlayer function
   spawnPlayer(p) {
     this.send(p, `\x1b[32mWelcome to Night City, ${p.name}.${p.admin ? ' [BUILDER MODE]' : ''}\x1b[0m`);
     p.dirty = true;
   }
+  */
+
   removePlayer(p) { this.players.delete(p); }
   send(p, text) {
     if (p.ws.readyState === 1) p.ws.send(JSON.stringify({ type: 'text', text }));
