@@ -27,6 +27,20 @@
     height: calc(100vh - 44px);
     overflow: hidden;
   }
+
+  /* Left Side: Fixed layout map viewport container box */
+  #map-viewport {
+    width: 280px;
+    border-right: 1px solid #ff2f8e;
+    padding: 12px;
+    white-space: pre;
+    font-family: 'Courier New', monospace; /* Locks letter alignment */
+    font-size: 16px;                       /* Makes characters crisp */
+    letter-spacing: 2px;                  /* Squares out your grid perfectly */
+    line-height: 1.2;
+    background: #0a0a0f;
+    overflow: hidden;
+  }
 /*
   #map-viewport {
     width: 260px;
@@ -38,17 +52,19 @@
     background: #0d0d14;
   }
 */
-    /* Left Side: Fixed layout map viewport container box */
+    /* Left Side: Fixed layout map viewport container box 
   #map-viewport {
-    width: 280px; /* Bumped up slightly to fit your 11x11 viewport radius nicely */
+    width: 280px; // Bumped up slightly to fit your 11x11 viewport radius nicely
     border-right: 1px solid #ff2f8e;
     padding: 12px;
     white-space: pre;
     font-size: 14px;
     line-height: 1.15;
     background: #0d0d14;
-    overflow: hidden; /* Prevents rogue text elements from leaking downwards */
+    overflow: hidden; // Prevents rogue text elements from leaking downwards 
   }
+  */
+
 
    /* Right Side: Scrollable text logs screen channel console log */
   #screen { 

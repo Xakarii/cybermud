@@ -191,6 +191,15 @@ export class World {
     this.send(p, mapGridText + infoFooterText);
   }
   
+ _glyphColor(g) {
+    if (g === '#') return '\x1b[38;5;242m\x1b[48;5;234m#\x1b[0m'; // Sleek dark corporate walls
+    if (g === '.') return '\x1b[38;5;45m\x1b[48;5;235m.\x1b[0m';  // Cyan reflection on wet asphalt
+    if (g === ',') return '\x1b[38;5;201m\x1b[48;5;53m,\x1b[0m';  // HOT NEON PINK / DARK PURPLE BACKING!
+    if (g === '~') return '\x1b[38;5;82m\x1b[48;5;22m~\x1b[0m';   // Glowing green toxic waste pools
+    if (g === '=') return '\x1b[38;5;196m\x1b[48;5;52m=\x1b[0m';  // Pulsing crimson laser security fences
+    return g;
+  }
+  /* using old color codes
   _glyphColor(g) {
     if (g === '#') return `\x1b[37m#\x1b[0m`; // White walls
     if (g === '.') return `\x1b[90m.\x1b[0m`; // Gray asphalt
@@ -198,6 +207,7 @@ export class World {
     if (g === '=') return `\x1b[91m=\x1b[0m`; // Red hazardous laser barricades!
     return g;
   }
+    */
   
   /* old _glyphColor function
   _glyphColor(g) {

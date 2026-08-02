@@ -6,6 +6,140 @@ const ANSI = {
 };
 
 function render(text) {
+  let html = '';
+  const re = /\x1b\[([\d;]+)m/g;
+  let last = 0, m;
+  
+  // Track our current active styles across splits
+  let fgColor = null;
+  let bgColor = null;
+
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+  // Maps the xterm 256 color palette numbers to glowing cyberpunk neon hex values
+  const palette = {
+    '45': '#00f0ff',   // Neon Cyan
+    '196': '#ff0055',  // Neon Laser Red
+    '82': '#39ff14',   // Neon Green
+    '201': '#ff00ff',  // Hot Neon Pink/Magenta!
+    '242': '#444455',  // Tech Gray
+    '234': '#1a1a26',  // Deep Wall Backing
+    '235': '#111524',  // Wet Asphalt Backing
+    '53': '#2a0033',   // Neon Alley Purple Backing!
+    '22': '#0a290a',   // Toxic Sludge Backing
+    '52': '#3a0010'    // Laser Field Backing
+  };
+
+  // Standard legacy ANSI colors used in your chat system
+  const legacyColors = {
+    '31': '#ff4d4d', '32': '#4dff88', '33': '#ffd24d', '36': '#4dd2ff',
+    '37': '#cccccc', '90': '#666677', '91': '#ff6b6b', '93': '#ffe14d',
+    '95': '#ff6bd6'
+  };
+
+  while ((m = re.exec(text))) {
+    html += esc(text.slice(last, m.index));
+    last = re.lastIndex;
+
+    const tokens = m[1].split(';');
+    
+    if (tokens[0] === '0') {
+      // CLEAR ALL STYLES IMMEDIATELY
+      fgColor = null;
+      bgColor = null;
+      html += '</span>'.repeat((html.match(/<span/g) || []).length - (html.match(/<\/span/g) || []).length);
+      continue;
+    }
+
+    // Parse extended 256-color palettes (38;5;X or 48;5;X)
+    if (tokens[0] === '38' && tokens[1] === '5') {
+      fgColor = palette[tokens[2]] || '#ffffff';
+    } else if (tokens[0] === '48' && tokens[1] === '5') {
+      bgColor = palette[tokens[2]] || '#000000';
+    } else {
+      // Fallback to your classic text messaging colors
+      for (const t of tokens) {
+        if (legacyColors[t]) fgColor = legacyColors[t];
+      }
+    }
+
+    // Build the clean style wrapper tag
+    let style = '';
+    if (fgColor) style += `color:${fgColor};`;
+    if (bgColor) style += `background-color:${bgColor};`;
+    
+    if (style) {
+      html += `<span style="${style}">`;
+    }
+  }
+
+  html += esc(text.slice(last));
+
+  // Ensure any loose open tags are safely closed at the very end of the string block
+  const openSpansCount = (html.match(/<span/g) || []).length - (html.match(/<\/span/g) || []).length;
+  if (openSpansCount > 0) {
+    html += '</span>'.repeat(openSpansCount);
+  }
+
+  return html;
+}
+
+/* broken render function
+function render(text) {
+  let html = '';
+  // Match standard, extended 256-color foregrounds (38;5), and backgrounds (48;5)
+  const re = /\x1b\[(\d+(?:;\d+)*)m/g;
+  let last = 0, m;
+  let fgColor = null, bgColor = null;
+
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
+  // Maps the xterm 256 color palette numbers to glowing cyberpunk neon hex values
+  const palette = {
+    45: '#00f0ff',   // Neon Cyan
+    196: '#ff0055',  // Neon Laser Red
+    82: '#39ff14',   // Neon Green
+    242: '#444455',  // Tech Gray
+    234: '#1a1a26',  // Deep Wall Backing
+    235: '#111524',  // Wet Asphalt Backing
+    22: '#0a290a',   // Toxic Sludge Backing
+    52: '#3a0010'    // Laser Field Backing
+  };
+
+  while ((m = re.exec(text))) {
+    html += esc(text.slice(last, m.index));
+    last = re.lastIndex;
+
+    const codes = m[1].split(';');
+    if (codes[0] === '0') {
+      // Reset formatting
+      fgColor = null; bgColor = null;
+    } else if (codes[0] === '38' && codes[1] === '5') {
+      fgColor = palette[codes[2]] || '#ffffff';
+    } else if (codes[0] === '48' && codes[1] === '5') {
+      bgColor = palette[codes[2]] || '#000000';
+    }
+
+    if (html.endsWith('</span>')) html = html.slice(0, -7);
+    
+    let style = '';
+    if (fgColor) style += `color:${fgColor};`;
+    if (bgColor) style += `background-color:${bgColor};`;
+    
+    if (style) html += `<span style="${style}">`;
+  }
+
+  html += esc(text.slice(last));
+  // Close any lingering spans
+  const openSpansCount = (html.match(/<span/g) || []).length - (html.match(/<\/span/g) || []).length;
+  for(let i=0; i < openSpansCount; i++) html += '</span>';
+
+  return html;
+}
+  */
+
+/* old render function
+function render(text) {
   let html = '', open = false;
   const re = /\x1b\[(\d+)m/g;
   let last = 0, m;
@@ -21,6 +155,7 @@ function render(text) {
   if (open) html += '</span>';
   return html;
 }
+  */
 
 function print(text) {
   const screenBox = document.getElementById('screen');
