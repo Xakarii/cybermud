@@ -77,11 +77,12 @@ export class World {
 
     const drone = {
       id: nextId++,
+      mobId: area._nextMobId++, // Local enemy ID (1, 2, 3...)
       isMob: true,
       name: 'Arasaka-Drone',
       area: p.area,
-      x: x,
-      y: y,
+      x: p.x, 
+      y: p.y,
       hp: 35,
       maxHp: 35,
       damage: [7,12],
@@ -187,7 +188,7 @@ export class World {
     
 // Scan if there are any active hostile entities standing right on your current index tile
     const localMobs = (area.mobs || []).filter(m => m.x === p.x && m.y === p.y && m.hp > 0);
-    const mobLabels = localMobs.map(m => `${m.name}(ID:${m.id})`).join(', ');
+    const mobLabels = localMobs.map(m => `${m.name}(Enemy:${m.mobId})`).join(', ');
     const enemyStatusText = mobLabels ? ` | Enemies: ${mobLabels}` : '';
 
     // BUILD ONE SINGLE STRING WITH ALL DATA MERGED

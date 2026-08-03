@@ -47,44 +47,80 @@ export function handleCommand(world, p, line) {
 
   if (cmd === 'target' || cmd === 't') {
     const area = world.areas.get(p.area);
-    const numericId = parseInt(arg, 10);
-    let tgt = null;
+    if (!arg) return world.send(p, 'Usage: target <name>, target enemy, or target enemy <number>');
 
-    // 1. Check if the user is passing a specific numeric database ID (e.g., "t 3")
-    if (!Number.isNaN(numericId)) {
-      tgt = [...world.players].find(o => o.id === numericId && o.area === p.area);
-      if (!tgt && area && area.mobs) {
-        tgt = area.mobs.find(m => m.id === numericId && m.hp > 0);
-      }
-    } else {
-      // 2. Otherwise, look up by handle name matching sequence text strings
-      // BEFORE searching the whole area array, check if our CURRENT target matches the name requested!
-      if (p.target) {
-        let currentTgt = [...world.players].find(o => o.id === p.target && o.area === p.area);
-        if (!currentTgt && area && area.mobs) {
-          currentTgt = area.mobs.find(m => m.id === p.target && m.hp > 0);
-        }
-        if (currentTgt && currentTgt.name.toLowerCase() === arg.toLowerCase()) {
-          return world.send(p, `\x1b[33mYou are already targeting the ${currentTgt.name}.\x1b[0m`);
-        }
-      }
+    let candidateMobs = [];
+    let candidatePlayers = [];
 
-      // 3. Standard array scan fallback path if we aren't targeting it yet
-      tgt = [...world.players].find(o => o !== p && o.area === p.area && o.name?.toLowerCase() === arg.toLowerCase());
-      if (!tgt && area && area.mobs) {
-        tgt = area.mobs.find(m => m.hp > 0 && m.name.toLowerCase() === arg.toLowerCase());
-      }
+    // Parse keywords out of the input argument (e.g., "enemy 2" -> label="enemy", num=2)
+    const subParts = arg.toLowerCase().split(/\s+/);
+    const searchLabel = subParts[0];
+    const searchNum = parseInt(subParts[1], 10);
+
+    // --- Gather Potential Mobs inside the Zone ---
+    if (area && area.mobs) {
+      area.mobs.forEach(m => {
+        if (m.hp <= 0) return;
+        
+        // Calculate grid distance from player to this mob
+        const distance = Math.max(Math.abs(m.x - p.x), Math.abs(m.y - p.y));
+        
+        // Check structural match rules:
+        // A) Exact local mob ID match (e.g., "target enemy 2")
+        const isExplicitMobId = (searchLabel === 'enemy' && !Number.isNaN(searchNum) && m.mobId === searchNum);
+        // B) General keyword match or partial string starts-with check (e.g., "target enemy" or "target ara")
+        const isNameMatch = m.name.toLowerCase().startsWith(searchLabel) || (searchLabel === 'enemy' && Number.isNaN(searchNum));
+
+        if (isExplicitMobId || isNameMatch) {
+          candidateMobs.push({ obj: m, dist: distance, explicit: isExplicitMobId });
+        }
+      });
     }
 
-    if (!tgt) return world.send(p, '\x1b[31mNo such target in range.\x1b[0m');
+    // --- Gather Potential Human Players inside the Zone ---
+    world.players.forEach(other => {
+      if (other === p || other.area !== p.area || !other.name) return;
+      const distance = Math.max(Math.abs(other.x - p.x), Math.abs(other.y - p.y));
+      
+      if (other.name.toLowerCase().startsWith(searchLabel)) {
+        candidatePlayers.push({ obj: other, dist: distance, explicit: false });
+      }
+    });
 
-    if (p.target === tgt.id) {
-      return world.send(p, `\x1b[33mYou are already targeting the ${tgt.name}.\x1b[0m`);
+    // --- Sorting Strategy Execution ---
+    // Prioritize explicit target configurations first, then closest distance, then lowest ID numbers
+    candidateMobs.sort((a, b) => {
+      if (a.explicit !== b.explicit) return b.explicit - a.explicit; // Explicit first
+      if (a.dist !== b.dist) return a.dist - b.dist;                 // Closest distance first
+      return a.obj.mobId - b.obj.mobId;                              // Lowest local ID tie-breaker
+    });
+
+    candidatePlayers.sort((a, b) => a.dist - b.dist);
+
+    // Pick the optimal selection (mobs get combat preference over players)
+    const match = candidateMobs[0] || candidatePlayers[0];
+
+    if (!match) {
+      return world.send(p, '\x1b[31mNo matching target in range.\x1b[0m');
     }
 
-    p.target = tgt.id;
-    const idLabel = tgt.isMob ? ` [ID: ${tgt.id}]` : '';
-    return world.send(p, `\x1b[33mTargeting ${tgt.name}${idLabel}.\x1b[0m`);
+    const selected = match.obj;
+
+    // Self-Targeting Shield Protection
+    if (selected.id === p.id) {
+      return world.send(p, '\x1b[31mYour targeting systems cannot lock onto your own signature.\x1b[0m');
+    }
+
+    // Already Targeted Check
+    if (p.target === selected.id) {
+      const nameLabel = selected.isMob ? `${selected.name} [Enemy: ${selected.mobId}]` : selected.name;
+      return world.send(p, `\x1b[33mYou are already targeting ${nameLabel}.\x1b[0m`);
+    }
+
+    // Bind Core Lock
+    p.target = selected.id;
+    const trackingTag = selected.isMob ? ` [Enemy: ${selected.mobId}]` : '';
+    return world.send(p, `\x1b[33mTargeting ${selected.name}${trackingTag}.\x1b[0m`);
   }
 
   // ---- look / info (no lag, immediate) ----
