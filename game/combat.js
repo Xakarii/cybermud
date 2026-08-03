@@ -176,7 +176,18 @@ export function tickCombat(world, now) {
             drone.hp = 0; 
             targetPlayer.dirty = true;
           }
+          // SAFEGUARD: Don't chase footprints if the user has sprinted too far away
+          const targetDist = Math.max(Math.abs(targetPlayer.x - drone.x), Math.abs(targetPlayer.y - drone.y));
+          
+          if (targetDist > 5) { // If player is further than 5 tiles away from the drone around corners, break tracking
+            world.send(targetPlayer, `\x1b[32mYou managed to slip away into the neon haze. The Arasaka-Drone loses your trail. [Despawned]\x1b[0m`);
+            if (targetPlayer.target === drone.id) targetPlayer.target = null;
+            drone.hp = 0;
+            targetPlayer.dirty = true;
+            continue;
+          }
         }
+      
       } // Ends "if (targetPlayer)"
       else {
         // Safe tracking rate fallback if player disconnects mid-chase
