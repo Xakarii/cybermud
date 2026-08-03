@@ -69,6 +69,7 @@ saveArea(area) {
       rightHand: { name: 'Militech pistol', dmg: [8, 14], aimLag: 300, fireLag: 800, aimed: false },
       leftHand: null,
       queue: [], nextActionTime: 0, target: null, dirty: false,
+      lastEncounterTime: 0,
     };
     this.players.add(p);
     return p;
@@ -106,6 +107,7 @@ saveArea(area) {
       hp: 35,
       maxHp: 35,
       damage: [4,10], 
+      range: 3,
       nextActionTime: Date.now() + 1000
     };
 
@@ -158,6 +160,8 @@ saveArea(area) {
     if (!area || x < 0 || y < 0 || x >= area.width || y >= area.height) return null;
     return area.tiles[`${x},${y}`] || null;
   }
+
+
   tryMove(p, dx, dy) {
     const nx = p.x + dx, ny = p.y + dy;
     const t = this.tileAt(p.area, nx, ny);
@@ -166,17 +170,31 @@ saveArea(area) {
     p.x = nx; p.y = ny;
     p.dirty = true;
 
-    // --- ENCOUNTER TRIGGER HOOK ---
-    // If stepping into a neon alleyway, run a 15% chance to trigger a drone ambush
+    // --- New paced ENCOUNTER TRIGGER HOOK ---
     if (t.glyph === ',') {
       const area = this.areas.get(p.area);
-      // Only spawn an ambush if there isn't already a living drone on this exact tile
-      const droneExists = (area.mobs || []).some(m => m.x === nx && m.y === ny && m.hp > 0);
+      const now = Date.now();
       
-      if (!droneExists && Math.random() < 0.15) {
+      // 1. Gather all active hostiles in the zone
+      const activeMobs = (area.mobs || []).filter(m => m.hp > 0);
+      
+      // 2. Map-level safety guard: Cap total cluster spawns at 4 so the grid stays playable
+      const areaIsTooCrowded = activeMobs.length >= 4;
+      
+      // 3. Pacing check: Ensure at least 3 seconds have passed since this player's last ambush
+      const isInsideBreatherWindow = (now - (p.lastEncounterTime || 0)) < 3000;
+      
+      // 4. Local tile check: Don't spawn a drone if one is already standing on your target coordinate
+      const droneOnTile = activeMobs.some(m => m.x === nx && m.y === ny);
+      
+      // Roll the dice (6% chance) only if all spatial and pacing criteria pass
+      if (!droneOnTile && !areaIsTooCrowded && !isInsideBreatherWindow && Math.random() < 0.06) {
+        // Lock the timestamp before spawning so the clock starts ticking instantly
+        p.lastEncounterTime = now;
         this.spawnEncounter(p, nx, ny);
       }
     }
+
   }
 
 

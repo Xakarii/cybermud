@@ -61,7 +61,6 @@ export function startFire(world, p, hand) {
 }
 
 
-// hook for damage-over-time, cooldowns, mob AI, etc.
 export function tickCombat(world, now) {
   for (const [areaName, area] of world.areas.entries()) {
     if (!area.mobs || area.mobs.length === 0) continue;
@@ -69,35 +68,74 @@ export function tickCombat(world, now) {
     const activeDrones = area.mobs.filter(m => m.hp > 0 && now >= m.nextActionTime);
 
     for (const drone of activeDrones) {
-      // CRITICAL CRASH SAFETY SHIELD CHECK: 
-      // If the drone flatlined earlier in this exact tick cycle, skip it instantly!
       if (drone.hp <= 0) continue; 
 
-      const targetPlayer = [...world.players].find(p => p.area === drone.area && p.x === drone.x && p.y === drone.y && p.hp > 0);
+      // 1. RADAR SCAN: Find any living player in the same area zone
+      // (If you want them to lock onto the player who triggered them, look up target IDs)
+      const targetPlayer = [...world.players].find(p => p.area === drone.area && p.hp > 0 && p.name);
 
       if (targetPlayer) {
-        // ... your damage execution logic blocks below stay exactly the same ...
-        const minDmg = drone.damage[0];
-        const maxDmg = drone.damage[1];
-        const dmg = minDmg + Math.floor(Math.random() * (maxDmg - minDmg + 1));
+        // 2. DISTANCE METRIC: Calculate current tile separation
+        const dx = targetPlayer.x - drone.x;
+        const dy = targetPlayer.y - drone.y;
+        const dist = Math.max(Math.abs(dx), Math.abs(dy));
 
-        targetPlayer.hp -= dmg;
-        world.send(targetPlayer, `\x1b[91mThe Arasaka-Drone whirs loudly and shoots you for ${dmg} damage!\x1b[0m`);
-        targetPlayer.dirty = true;
-        drone.nextActionTime = now + 1500;
+        // Drone weapon range fallback limit (defaults to 3 tiles (meters in gameplay) if undefined)
+        const attackRange = drone.range || 3;
 
-        if (targetPlayer.hp <= 0) {
-          world.broadcastArea(targetPlayer.area, 0, 0, `\x1b[95m${targetPlayer.name} was flatlined by an Arasaka-Drone.\x1b[0m`);
-          targetPlayer.hp = targetPlayer.maxHp;
-          targetPlayer.x = 2; targetPlayer.y = 2; targetPlayer.target = null; targetPlayer.queue = [];
-          world.send(targetPlayer, `\x1b[31m[CRITICAL] System failure. Rebooting vital matrices... Spawning at Safehouse.\x1b[0m`);
-          drone.hp = 0; 
+        if (dist <= attackRange) {
+          // ---- ACTION A: PLAYER IS IN RANGE -> FIRE WEAPONS ----
+          const minDmg = drone.damage[0];
+          const maxDmg = drone.damage[1];
+          const dmg = minDmg + Math.floor(Math.random() * (maxDmg - minDmg + 1));
+
+          targetPlayer.hp -= dmg;
+          world.send(targetPlayer, `\x1b[91mThe Arasaka-Drone whirs loudly and shoots you from ${dist} meters away for ${dmg} damage!\x1b[0m`);
+          targetPlayer.dirty = true;
+          
+          // Apply standard weapon fire cooldown (1.5 seconds)
+          drone.nextActionTime = now + 1500;
+
+          // Death handler evaluation 
+          if (targetPlayer.hp <= 0) {
+            world.broadcastArea(targetPlayer.area, 0, 0, `\x1b[95m${targetPlayer.name} was flatlined by an Arasaka-Drone.\x1b[0m`);
+            targetPlayer.hp = targetPlayer.maxHp;
+            targetPlayer.x = 2; targetPlayer.y = 2; targetPlayer.target = null; targetPlayer.queue = [];
+            world.send(targetPlayer, `\x1b[31m[CRITICAL] System failure. Rebooting vital matrices... Spawning at Safehouse.\x1b[0m`);
+            drone.hp = 0; 
+          }
+        } else {
+          // ---- ACTION B: OUT OF RANGE -> PURSUE THE RUNNER ----
+          // Compute normalized step vector (-1, 0, or 1) along each vector path
+          const stepX = dx === 0 ? 0 : (dx > 0 ? 1 : -1);
+          const stepY = dy === 0 ? 0 : (dy > 0 ? 1 : -1);
+
+          const nextX = drone.x + stepX;
+          const nextY = drone.y + stepY;
+
+          // Spatial map safety guard: verify target path tile layout exists and isn't blocked
+          const targetTile = world.tileAt(drone.area, nextX, nextY);
+          
+          if (targetTile && !targetTile.blocked) {
+            drone.x = nextX;
+            drone.y = nextY;
+            
+            // Alert players in range that the threat is moving
+            world.send(targetPlayer, `\x1b[90mThe Arasaka-Drone thrusters hiss as it moves closer... (${drone.x}, ${drone.y})\x1b[0m`);
+            targetPlayer.dirty = true;
+          }
+
+          // Apply pursuit movement cycle lag delay (600ms engine step delay)
+          // Adjust this variable to make drones chase faster or slower!
+          drone.nextActionTime = now + 600;
         }
       } else {
+        // Passive standby scan rate if no organic targets inhabit the map space
         drone.nextActionTime = now + 500;
       }
     }
 
+    // Scrub destroyed arrays clean
     area.mobs = area.mobs.filter(m => m.hp > 0);
   }
 }
