@@ -167,6 +167,16 @@ saveArea(area) {
     const t = this.tileAt(p.area, nx, ny);
     if (!t) { this.send(p, '\x1b[31mThe grid ends here.\x1b[0m'); return; }
     if (t.blocked) { this.send(p, '\x1b[31mSomething solid blocks the way.\x1b[0m'); return; }
+    
+        // --- ADD SAFETY INITIALIZATION GUARD SHIELD ---
+    if (!p.trail) {
+      p.trail = []; 
+    }
+    // --- ADD BREADCRUMB BEFORE CHANGING POSITION ---
+    p.trail.push({ x: p.x, y: p.y });
+    if (p.trail.length > 15) {
+      p.trail.shift(); // Keep only the last 6 steps to prevent infinite memory growth
+    }
     p.x = nx; p.y = ny;
     p.dirty = true;
 
