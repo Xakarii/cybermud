@@ -79,40 +79,43 @@ saveArea(area) {
     const area = this.areas.get(p.area);
     if (!area) return;
 
-    // FIX: Attach the counter directly to the global World instance memory map instead of the volatile area data object
-    if (!this._mobIdCounters) this._mobIdCounters = new Map();
-    if (!this._mobIdCounters.has(p.area)) this._mobIdCounters.set(p.area, 1);
-    
-    const currentLocalId = this._mobIdCounters.get(p.area);
-    this._mobIdCounters.set(p.area, currentLocalId + 1); // Safely increment the clean integer
+    // Ensure our mobs array is cleanly initialized first
+    if (!area.mobs) area.mobs = [];
+
+    // ---- DYNAMIC LOWEST ID CALCULATION ----
+    // 1. Gather all local ID integers currently assigned to living mobs in this area
+    const activeMobIds = new Set(
+      area.mobs.filter(m => m.hp > 0).map(m => m.mobId)
+    );
+
+    // 2. Loop upwards from 1 until we find an ID integer that is not in use
+    let assignedMobId = 1;
+    while (activeMobIds.has(assignedMobId)) {
+      assignedMobId++;
+    }
+    // ----------------------------------------
 
     const drone = {
-      id: nextId++, // Global system tracking ID
-      mobId: currentLocalId, // Local enemy ID (1, 2, 3...) - GUARANTEED INTEGER!
+      id: nextId++, // Global network synchronization tracking ID
+      mobId: assignedMobId, // Lowest available display index (1, 2, 3...)
       isMob: true,
       name: 'Arasaka-Drone',
       area: p.area,
-      // Force it to spawn exactly on the player's current coordinates!
       x: p.x, 
       y: p.y,
       hp: 35,
       maxHp: 35,
-      damage:[6,12], 
+      damage: [4,10], 
       nextActionTime: Date.now() + 1000
     };
 
-    // Initialize the mobs array if it doesn't exist, then add the drone
-    if (!area.mobs) area.mobs = [];
     area.mobs.push(drone);
 
-    // Notify the player
     this.send(p, '\x1b[31m[WARNING] A security drone drops from a neon billboard, weapons armed!\x1b[0m');
     
-    // Automatically set the player's combat target to this drone's ID for convenience
     p.target = drone.id;
     this.send(p, `\x1b[33mTarget locked onto ${drone.name} [Enemy: ${drone.mobId}].\x1b[0m`);
 
-    // Force a map refresh so the player sees the enemy symbol immediately
     p.dirty = true;
   }
   spawnPlayer(p) {
@@ -177,36 +180,55 @@ saveArea(area) {
   }
 
 
-  // ---- ASCII viewport render ----
+   // ---- Fixed Viewport Render: Handles Stacking Multi-Occupancy ----
   sendView(p) {
     const area = this.areas.get(p.area);
+    if (!area) return;
+
     const R = 5; // radius -> 11x11 viewport
     let rows = [];
+
     for (let y = p.y - R; y <= p.y + R; y++) {
       let row = '';
       for (let x = p.x - R; x <= p.x + R; x++) {
-        if (x === p.x && y === p.y) { row += '\x1b[93m@\x1b[0m'; continue; }
-        const occupant = [...this.players].find(o => o.area === p.area && o.x === x && o.y === y);
-        if (occupant) { row += '\x1b[91mP\x1b[0m'; continue; }
-        const mobOccupant = (area.mobs || []).find(m => m.x === x && m.y === y && m.hp > 0);
-        if (mobOccupant) { row += '\x1b[38;5;196mD\x1b[0m'; continue; } // Red 'D' for Drone
-        const t = area.tiles[`${x},${y}`];
-        row += t ? this._glyphColor(t.glyph) : ' ';
+        
+        // 1. Check ALL entities present on this specific grid tile
+        const isMe = (x === p.x && y === p.y);
+        const otherPlayer = [...this.players].find(o => o.area === p.area && o.x === x && o.y === y && o !== p && o.name);
+        const activeMob = (area.mobs || []).find(m => m.x === x && m.y === y && m.hp > 0);
+
+        // 2. Strict Stacking Priority Matrix
+        // If YOU are on the tile, always draw '@' so you never lose your screen anchor.
+        // If you step OFF, the matrix automatically falls back to showing the Drone or Player underneath.
+        if (isMe) { 
+          row += '\x1b[93m@\x1b[0m'; 
+        } else if (activeMob) { 
+          row += '\x1b[38;5;196mD\x1b[0m'; // Red 'D' for Drone
+        } else if (otherPlayer) { 
+          row += '\x1b[91mP\x1b[0m';        // Red 'P' for Player
+        } else {
+          const t = area.tiles[`${x},${y}`];
+          row += t ? this._glyphColor(t.glyph) : ' ';
+        }
       }
       rows.push(row);
     }
+
     const here = area.tiles[`${p.x},${p.y}`];
     
-// Scan if there are any active hostile entities standing right on your current index tile
+    // 3. Shared Occupancy Status Header (Solves the "Invisible Drone" problem)
     const localMobs = (area.mobs || []).filter(m => m.x === p.x && m.y === p.y && m.hp > 0);
-    const mobLabels = localMobs.map(m => `${m.name}(Enemy:${m.mobId})`).join(', ');
-    const enemyStatusText = mobLabels ? ` | Enemies: ${mobLabels}` : '';
+    const mobLabels = localMobs.map(m => `${m.name}(ID:${m.mobId})`).join(', ');
+    const enemyStatusText = mobLabels ? ` | HOSTILE HERE: ${mobLabels}` : '';
 
-    // BUILD ONE SINGLE STRING WITH ALL DATA MERGED
+    const otherPlayersHere = [...this.players].filter(o => o.area === p.area && o.x === p.x && o.y === p.y && o !== p && o.name);
+    const playerLabels = otherPlayersHere.map(o => o.name).join(', ');
+    const playerStatusText = playerLabels ? ` | Runners: ${playerLabels}` : '';
+
+    // Merge map array strings and console UI text block into one transmission
     const mapGridText = rows.join('\n');
-    const infoFooterText = `\n\x1b[90m(${p.x},${p.y}) ${here ? here.name : ''}  HP:${p.hp}/${p.maxHp}\x1b[0m`;
+    const infoFooterText = `\n\x1b[90m(${p.x},${p.y}) ${here ? here.name : ''}${enemyStatusText}${playerStatusText}  HP:${p.hp}/${p.maxHp}\x1b[0m`;
     
-    // Fire off ONE single network packet instead of two loose ones!
     this.send(p, mapGridText + infoFooterText);
   }
   
