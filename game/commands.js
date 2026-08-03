@@ -47,29 +47,43 @@ export function handleCommand(world, p, line) {
 
   if (cmd === 'target' || cmd === 't') {
     const area = world.areas.get(p.area);
-    if (!arg) return world.send(p, 'Usage: target <name>, target enemy, or target enemy <number>');
+    if (!arg) return world.send(p, 'Usage: target <name>, target <ID>, target enemy, or target enemy <ID>');
 
     let candidateMobs = [];
     let candidatePlayers = [];
 
-    // Parse keywords out of the input argument (e.g., "enemy 2" -> label="enemy", num=2)
+    // Cleanly split our arguments array up
     const subParts = arg.toLowerCase().split(/\s+/);
-    const searchLabel = subParts[0];
-    const searchNum = parseInt(subParts[1], 10);
+    
+    // SMART ARGUMENT PARSING:
+    // Case A: User typed a single number like "t 1" -> searchNum = 1, searchLabel = "enemy" (or blank)
+    // Case B: User typed "t enemy 1" -> searchLabel = "enemy", searchNum = 1
+    // Case C: User typed a string like "t ara" -> searchLabel = "ara", searchNum = NaN
+    let searchLabel = subParts[0];
+    let searchNum = parseInt(subParts[0], 10);
+
+    // If the first argument typed was actually a standalone number (e.g., "t 1")
+    if (!Number.isNaN(searchNum)) {
+      searchLabel = ''; // Clear label so it doesn't try to string-match the name to "1"
+    } else if (subParts.length > 1) {
+      // If they typed two words (e.g., "enemy 1"), grab the second word as the target number
+      searchNum = parseInt(subParts[1], 10);
+    }
 
     // --- Gather Potential Mobs inside the Zone ---
     if (area && area.mobs) {
       area.mobs.forEach(m => {
         if (m.hp <= 0) return;
         
-        // Calculate grid distance from player to this mob
+        // Calculate grid distance from player to this mob index space
         const distance = Math.max(Math.abs(m.x - p.x), Math.abs(m.y - p.y));
         
-        // Check structural match rules:
-        // A) Exact local mob ID match (e.g., "target enemy 2")
-        const isExplicitMobId = (searchLabel === 'enemy' && !Number.isNaN(searchNum) && m.mobId === searchNum);
-        // B) General keyword match or partial string starts-with check (e.g., "target enemy" or "target ara")
-        const isNameMatch = m.name.toLowerCase().startsWith(searchLabel) || (searchLabel === 'enemy' && Number.isNaN(searchNum));
+        // Determine matching rules:
+        // A) Explicit numeric local mob ID match (Matches "t 1" or "t enemy 1")
+        const isExplicitMobId = (!Number.isNaN(searchNum) && m.mobId === searchNum);
+        
+        // B) Keyword or partial text string match (Matches "t ara" or "t enemy")
+        const isNameMatch = searchLabel && (m.name.toLowerCase().startsWith(searchLabel) || searchLabel === 'enemy');
 
         if (isExplicitMobId || isNameMatch) {
           candidateMobs.push({ obj: m, dist: distance, explicit: isExplicitMobId });
@@ -82,22 +96,31 @@ export function handleCommand(world, p, line) {
       if (other === p || other.area !== p.area || !other.name) return;
       const distance = Math.max(Math.abs(other.x - p.x), Math.abs(other.y - p.y));
       
-      if (other.name.toLowerCase().startsWith(searchLabel)) {
-        candidatePlayers.push({ obj: other, dist: distance, explicit: false });
+      // Allow targeting players by global system ID number (e.g. "t 1") or partial handle name string strings
+      const isPlayerIdMatch = (!Number.isNaN(searchNum) && other.id === searchNum);
+      const isPlayerNameMatch = searchLabel && other.name.toLowerCase().startsWith(searchLabel);
+
+      if (isPlayerIdMatch || isPlayerNameMatch) {
+        candidatePlayers.push({ obj: other, dist: distance, explicit: isPlayerIdMatch });
       }
     });
 
-    // --- Sorting Strategy Execution ---
-    // Prioritize explicit target configurations first, then closest distance, then lowest ID numbers
+    // --- Sorting Priority Loop ---
+    // 1. Explicit ID matches go first
+    // 2. Closest distance goes second
+    // 3. Lowest local ID number acts as the ultimate tie-breaker metrics
     candidateMobs.sort((a, b) => {
-      if (a.explicit !== b.explicit) return b.explicit - a.explicit; // Explicit first
-      if (a.dist !== b.dist) return a.dist - b.dist;                 // Closest distance first
-      return a.obj.mobId - b.obj.mobId;                              // Lowest local ID tie-breaker
+      if (a.explicit !== b.explicit) return b.explicit - a.explicit; 
+      if (a.dist !== b.dist) return a.dist - b.dist;                 
+      return a.obj.mobId - b.obj.mobId;                              
     });
 
-    candidatePlayers.sort((a, b) => a.dist - b.dist);
+    candidatePlayers.sort((a, b) => {
+      if (a.explicit !== b.explicit) return b.explicit - a.explicit;
+      return a.dist - b.dist;
+    });
 
-    // Pick the optimal selection (mobs get combat preference over players)
+    // Mobs automatically take targeting priority over players if both match up
     const match = candidateMobs[0] || candidatePlayers[0];
 
     if (!match) {
@@ -106,18 +129,18 @@ export function handleCommand(world, p, line) {
 
     const selected = match.obj;
 
-    // Self-Targeting Shield Protection
+    // Self-Targeting Shield Protection Guard check
     if (selected.id === p.id) {
       return world.send(p, '\x1b[31mYour targeting systems cannot lock onto your own signature.\x1b[0m');
     }
 
-    // Already Targeted Check
+    // Already Targeted Notification Notice Validation
     if (p.target === selected.id) {
-      const nameLabel = selected.isMob ? `${selected.name} [Enemy: ${selected.mobId}]` : selected.name;
+      const nameLabel = selected.isMob ? `${selected.name} [Enemy: ${selected.mobId}]` : selected.selected.name;
       return world.send(p, `\x1b[33mYou are already targeting ${nameLabel}.\x1b[0m`);
     }
 
-    // Bind Core Lock
+    // Apply Core Selection Lock Registry
     p.target = selected.id;
     const trackingTag = selected.isMob ? ` [Enemy: ${selected.mobId}]` : '';
     return world.send(p, `\x1b[33mTargeting ${selected.name}${trackingTag}.\x1b[0m`);

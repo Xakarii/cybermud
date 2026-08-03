@@ -1,0 +1,3 @@
+Make mob id's non-permament, when they die, the counter is reduced
+ by 1 so that if 2 enemies are spawned the remaining enemy is labeled 
+ as number 1

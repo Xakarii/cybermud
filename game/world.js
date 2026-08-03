@@ -50,9 +50,13 @@ export class World {
     this.areas.set(area.name, area);
     this.saveArea(area);
   }
-
-  saveArea(area) {
-    const { _file, ...clean } = area;
+saveArea(area) {
+    // FIXED SERIALIZATION: Exclude both _file path strings, runtime mobs, AND old counters from being written to disk!
+    const { _file, mobs, _nextMobId, ...clean } = area;
+    
+    // Explicitly enforce that the saved JSON data file always remains clean
+    clean.mobs = [];
+    
     fs.writeFileSync(area._file, JSON.stringify(clean, null, 2));
   }
 
@@ -70,23 +74,31 @@ export class World {
     return p;
   }
 
-  // ---- random enemy encounters ----
+    // ---- random enemy encounters ----
   spawnEncounter(p, x, y) {
     const area = this.areas.get(p.area);
     if (!area) return;
 
+    // FIX: Attach the counter directly to the global World instance memory map instead of the volatile area data object
+    if (!this._mobIdCounters) this._mobIdCounters = new Map();
+    if (!this._mobIdCounters.has(p.area)) this._mobIdCounters.set(p.area, 1);
+    
+    const currentLocalId = this._mobIdCounters.get(p.area);
+    this._mobIdCounters.set(p.area, currentLocalId + 1); // Safely increment the clean integer
+
     const drone = {
-      id: nextId++,
-      mobId: area._nextMobId++, // Local enemy ID (1, 2, 3...)
+      id: nextId++, // Global system tracking ID
+      mobId: currentLocalId, // Local enemy ID (1, 2, 3...) - GUARANTEED INTEGER!
       isMob: true,
       name: 'Arasaka-Drone',
       area: p.area,
+      // Force it to spawn exactly on the player's current coordinates!
       x: p.x, 
       y: p.y,
       hp: 35,
       maxHp: 35,
-      damage: [7,12],
-      nextActionTime: Date.now() + 1000 // 1 second before its first attack tick
+      damage:[6,12], 
+      nextActionTime: Date.now() + 1000
     };
 
     // Initialize the mobs array if it doesn't exist, then add the drone
@@ -98,12 +110,11 @@ export class World {
     
     // Automatically set the player's combat target to this drone's ID for convenience
     p.target = drone.id;
-    this.send(p, `\x1b[33mTarget locked onto ${drone.name}.\x1b[0m`);
+    this.send(p, `\x1b[33mTarget locked onto ${drone.name} [Enemy: ${drone.mobId}].\x1b[0m`);
 
     // Force a map refresh so the player sees the enemy symbol immediately
     p.dirty = true;
   }
-
   spawnPlayer(p) {
     this.send(p, `\x1b[32mWelcome to Night City, ${p.name}.${p.admin ? ' [BUILDER MODE]' : ''}\x1b[0m`);
     p.dirty = true;
@@ -207,21 +218,5 @@ export class World {
     if (g === '=') return '\x1b[38;5;196m\x1b[48;5;52m=\x1b[0m';  // Pulsing crimson laser security fences
     return g;
   }
-  /* using old color codes
-  _glyphColor(g) {
-    if (g === '#') return `\x1b[37m#\x1b[0m`; // White walls
-    if (g === '.') return `\x1b[90m.\x1b[0m`; // Gray asphalt
-    if (g === '~') return `\x1b[32m~\x1b[0m`; // Vibrant green sludge pools!
-    if (g === '=') return `\x1b[91m=\x1b[0m`; // Red hazardous laser barricades!
-    return g;
-  }
-    */
-  
-  /* old _glyphColor function
-  _glyphColor(g) {
-    if (g === '#') return `\x1b[37m#\x1b[0m`;
-    if (g === '.') return `\x1b[90m.\x1b[0m`;
-    return g;
-  }
-  */
+
 }
