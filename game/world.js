@@ -66,11 +66,20 @@ saveArea(area) {
       id: nextId++, ws, name: null, admin: false,
       area: 'downtown', x: 2, y: 2,
       hp: 100, maxHp: 100,
-      rightHand: { name: 'Militech pistol', dmg: [8, 14], aimLag: 300, fireLag: 800, aimed: false },
+      rightHand: { 
+        name: 'Militech pistol', 
+        dmg:[2,10], 
+        aimLag: 300, 
+        fireLag: 800, 
+        aimed: false, 
+        ammo: 6,        // Loaded inside the active clip magazine
+        maxAmmo: 6,     // Maximum clip capability
+        reserveAmmo: 24 // Spare ammunition carried in reserve pockets
+      },
       leftHand: null,
       queue: [], nextActionTime: 0, target: null, dirty: false,
       lastEncounterTime: 0,
-    };
+    };  
     this.players.add(p);
     return p;
   }
@@ -139,14 +148,17 @@ saveArea(area) {
   send(p, text) {
     if (p.ws.readyState === 1) p.ws.send(JSON.stringify({ type: 'text', text }));
   }
+
   broadcastArea(area, x, y, text, except) {
     for (const p of this.players)
       if (p.area === area && p !== except) this.send(p, text);
   }
+
   // ---- action queue with per-action lag ----
   queueAction(p, fn, lag) {
     p.queue.push({ fn, lag });
   }
+
   processQueue(p, now) {
     if (now < p.nextActionTime) return;      // still lagged from last action
     const act = p.queue.shift();
@@ -154,13 +166,13 @@ saveArea(area) {
     act.fn();                                 // execute the action
     p.nextActionTime = now + act.lag;         // apply this action's delay
   }
+
   // ---- movement ----
   tileAt(areaName, x, y) {
     const area = this.areas.get(areaName);
     if (!area || x < 0 || y < 0 || x >= area.width || y >= area.height) return null;
     return area.tiles[`${x},${y}`] || null;
   }
-
 
   tryMove(p, dx, dy) {
     const nx = p.x + dx, ny = p.y + dy;
@@ -255,6 +267,12 @@ saveArea(area) {
 
     // Merge map array strings and console UI text block into one transmission
     const mapGridText = rows.join('\n');
+    
+    // Check if player's active firearm slot processes ammo resource values
+    const rGun = p.rightHand;
+    const ammoHudText = (rGun && rGun.ammo !== undefined) ? ` [AMMO:${rGun.ammo}/${rGun.maxAmmo}]` : '';
+
+
     const infoFooterText = `\n\x1b[90m(${p.x},${p.y}) ${here ? here.name : ''}${enemyStatusText}${playerStatusText}  HP:${p.hp}/${p.maxHp}\x1b[0m`;
     
     this.send(p, mapGridText + infoFooterText);

@@ -1,3 +1,11 @@
-Make mob id's non-permament, when they die, the counter is reduced
+Todo: 
+Clear command queue on death, or if the player types stop
+Add a config command to toggle autotargeting on or off
+Expand city, add surrounding areas 
+Decide whether to make the city a small O on the larger map or make the map continuous
+(May be difficult to edit a map that is too large)
+
+Done:
+ Make mob id's non-permament, when they die, the counter is reduced
  by 1 so that if 2 enemies are spawned the remaining enemy is labeled 
  as number 1

@@ -9,6 +9,11 @@ export function startFire(world, p, hand) {
   const w = p[hand];
   if (!w) return world.send(p, `\x1b[31mNothing in that hand.\x1b[0m`);
 
+ // ---- NEW: AMMUNITION MAGAZINE CHECK ----
+  if (w.ammo !== undefined && w.ammo <= 0) {
+    return world.send(p, `\x1b[31m*CLICK* Your ${w.name} magazine is empty! You need to reload.\x1b[0m`);
+  }
+
   const area = world.areas.get(p.area);
   
   // LOOK FOR A TARGET PLAYER OR A TARGET MOB SHARING THE LOCKED TARGET ID
@@ -22,6 +27,10 @@ export function startFire(world, p, hand) {
   // Range check
   const dist = Math.max(Math.abs(target.x - p.x), Math.abs(target.y - p.y));
   if (dist > 8) return world.send(p, `\x1b[31mTarget out of range.\x1b[0m`);
+
+  if (w.ammo !== undefined) {
+    w.ammo--;
+  }
 
   const hitChance = w.aimed ? 0.85 : 0.55;
   w.aimed = false;
@@ -248,4 +257,31 @@ function hasLineOfSight(world, areaName, x0, y0, x1, y1) {
     }
   }
   return true;
+}
+
+// ---- WEAPON MANAGEMENT: RELOAD MAGAZINE LOOP ----
+export function reloadWeapon(world, p, handName) {
+  const w = p[handName];
+  if (!w) return world.send(p, `\x1b[31mNothing in that hand to reload.\x1b[0m`);
+  
+  if (w.ammo === undefined || w.maxAmmo === undefined || w.reserveAmmo === undefined) {
+    return world.send(p, `\x1b[31mYour ${w.name} doesn't use ammunition clips.\x1b[0m`);
+  }
+
+  if (w.ammo === w.maxAmmo) {
+    return world.send(p, `\x1b[33mThe ${w.name} magazine is already topped off.\x1b[0m`);
+  }
+
+  if (w.reserveAmmo <= 0) {
+    return world.send(p, `\x1b[31mYou are completely out of spare reserve ammunition!\x1b[0m`);
+  }
+
+  const needed = w.maxAmmo - w.ammo;
+  const transferAmount = Math.min(needed, w.reserveAmmo);
+
+  w.ammo += transferAmount;
+  w.reserveAmmo -= transferAmount;
+
+  world.send(p, `\x1b[36mYou pop the empty clip and snap a fresh magazine into your ${w.name}. (${w.ammo}/${w.maxAmmo} | Reserve: ${w.reserveAmmo})\x1b[0m`);
+  p.dirty = true;
 }
