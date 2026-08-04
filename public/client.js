@@ -1,5 +1,6 @@
 // Minimal ANSI -> HTML color converter registry map setup
 const ANSI = {
+  '30': '#05050a', // <--- ADD THIS LINE FOR TECH BLACK TEXT!
   '31': '#ff4d4d', '32': '#4dff88', '33': '#ffd24d', '36': '#4dd2ff',
   '37': '#cccccc', '90': '#666677', '91': '#ff6b6b', '93': '#ffe14d',
   '95': '#ff6bd6', '0': null,
@@ -43,11 +44,16 @@ function render(text) {
 
     const tokens = m[1].split(';');
     
-    if (tokens[0] === '0') {
-      // CLEAR ALL STYLES IMMEDIATELY
+   if (tokens[0] === '0') {
+      // ---- FIXED: ABSOLUTE CLEAR ALL SPANS IMMEDIATELY ----
       fgColor = null;
       bgColor = null;
-      html += '</span>'.repeat((html.match(/<span/g) || []).length - (html.match(/<\/span/g) || []).length);
+      
+      // Calculate exactly how many unclosed open span tags are lingering in our string block
+      const unclosedCount = (html.match(/<span/g) || []).length - (html.match(/<\/span/g) || []).length;
+      if (unclosedCount > 0) {
+        html += '</span>'.repeat(unclosedCount);
+      }
       continue;
     }
 
@@ -111,7 +117,7 @@ ws.onmessage = (e) => {
     }
   }
 
-  // Combat rolls, narratives, and chats print cleanly into your scrolling right text window box pane!
+  // Combat rolls, narratives, and chats print cleanly into scrolling right text window box pane
   print(msg.text);
 };
 

@@ -45,7 +45,7 @@ export function startFire(world, p, hand) {
   const dmg = w.dmg[0] + Math.floor(Math.random() * (w.dmg[1] - w.dmg[0] + 1));
   target.hp -= dmg;
   
-  world.send(p, `\x1b[91mYour ${w.name} tears into ${target.name} for ${dmg}! (HP: ${target.hp}/${target.maxHp || 35})\x1b[0m`);
+  world.send(p, `\x1b[38;5;45mYour ${w.name} tears into ${target.name} for ${dmg}! (HP: ${target.hp}/${target.maxHp || 35})\x1b[0m`);
   
   // Only send damage notifications if target is an actual human player
   if (!target.isMob) {

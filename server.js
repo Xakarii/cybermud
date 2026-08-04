@@ -46,17 +46,19 @@ wss.on('connection', (ws) => {
   });
   ws.on('close', () => world.removePlayer(player));
 });
+
+
+
+// ---- Main game loop ----
 // ---- Main game loop ----
 setInterval(() => {
   const now = Date.now();
 
-
-
-  // Track tick cycles inside the scope to clock down health pulses cleanly
+  // FIX: Initialize and increment the tick counter every cycle so math doesn't throw undefined!
   if (!global.regenTickCounter) global.regenTickCounter = 0;
   global.regenTickCounter++;
 
-  // ---- NEW: NEURAL PATCH HEALTH REGENERATION ----
+  // ---- NEURAL PATCH HEALTH REGENERATION ----
   // Runs a health tick pulse once every 500ms (Every 5 engine cycles)
   if (global.regenTickCounter % 5 === 0) {
     world.players.forEach((p) => {
@@ -65,61 +67,56 @@ setInterval(() => {
         
         // If standing on the safe house enclave tile
         if (localTile && localTile.glyph === 'H') {
-          p.hp = Math.min(p.maxHp, p.hp + 1); // Restore 1 HP up to their max limit
-          world.send(p, `\x1b[32m[SYSTEM] Safehouse medical injectors pulsing... Vital signs recovering. (HP: ${p.hp}/${p.maxHp})\x1b[0m`);
-          p.dirty = true; // Refresh dashboard to show health increase
+          p.hp = Math.min(p.maxHp, p.hp + 1); // Restore 1 HP silently
+          p.dirty = true; 
         }
       }
     });
   }
 
-    // ---- NEW: BACKEND AUTOPLAY PATH ROUTER ----
+  // ---- Main game loop: Axis-Locked Autoplay Vector Driver ----
   world.players.forEach((p) => {
     if (p.name && p.isNavigating && p.navTarget) {
-      // Stop moving if the player is currently stuck in an action lag queue frame
       if (now < p.nextActionTime) return;
 
       // Check if we arrived exactly at our goal destination coordinates
       if (p.x === p.navTarget.x && p.y === p.navTarget.y) {
         p.isNavigating = false;
         p.navTarget = null;
-        world.send(p, `\x1b[32m[NAV] Waypoint reached successfully.\x1b[0m`);
+        world.send(p, `\x1b[32m[NAV] Destination coordinates reached successfully.\x1b[0m`);
         p.dirty = true;
         return;
       }
 
-      // Compute heading directional steps toward the target coordinate
+      // Calculate remaining distances along each individual plane axis
       const dx = p.navTarget.x - p.x;
       const dy = p.navTarget.y - p.y;
       
-      const stepX = dx === 0 ? 0 : (dx > 0 ? 1 : -1);
-      const stepY = dy === 0 ? 0 : (dy > 0 ? 1 : -1);
+      let stepX = 0;
+      let stepY = 0;
 
-      // Verify if the next structural step is safe and open
+      // Axis-Locked resolution algorithm 
+      if (dx !== 0) {
+        stepX = dx > 0 ? 1 : -1;
+      } else if (dy !== 0) {
+        stepY = dy > 0 ? 1 : -1;
+      }
+
+      // Verify structural environment boundaries at our calculated single-axis tile
       const nextTile = world.tileAt(p.area, p.x + stepX, p.y + stepY);
       
       if (nextTile && !nextTile.blocked) {
-        // Synchronize our body facing direction to match where the navigation system is pulling us
-        if (stepX === 1 && stepY === -1) p.facing = 'northeast';
-        else if (stepX === -1 && stepY === -1) p.facing = 'northwest';
-        else if (stepX === 1 && stepY === 1) p.facing = 'southeast';
-        else if (stepX === -1 && stepY === 1) p.facing = 'southwest';
-        else if (stepX === 1) p.facing = 'east';
+        if (stepX === 1) p.facing = 'east';
         else if (stepX === -1) p.facing = 'west';
         else if (stepY === 1) p.facing = 'south';
         else if (stepY === -1) p.facing = 'north';
 
-
-        // Execute step
         world.tryMove(p, stepX, stepY);
-        
-        // Apply short 200ms walking step lag intervals to prevent instant teleportation exploits
         p.nextActionTime = now + 200; 
       } else {
-        // Something solid hit, disengage navigation systems immediately
         p.isNavigating = false;
         p.navTarget = null;
-        world.send(p, `\x1b[31m[NAV] Autopilot aborted! Obstacle or map bounds blocking path.\x1b[0m`);
+        world.send(p, `\x1b[31m[NAV] Autopilot aborted! Path blocked by terrain coordinate bounds.\x1b[0m`);
         p.dirty = true;
       }
     }
@@ -127,13 +124,15 @@ setInterval(() => {
 
   // process any queued actions whose lag has expired
   world.players.forEach((p) => world.processQueue(p, now));
-  // process any queued actions whose lag has expired
-  world.players.forEach((p) => world.processQueue(p, now));
+
   // resolve ongoing combat
   tickCombat(world, now);
+
   // push viewport updates to anyone flagged dirty
   world.players.forEach((p) => {
     if (p.name && p.dirty) { world.sendView(p); p.dirty = false; }
   });
-}, TICK_MS);
+}, TICK_MS); // <--- Cleanly and safely closes the 100ms game loop interval thread!
+
+
 server.listen(PORT, () => console.log(`cyberMUD running on http://localhost:${PORT}`));
