@@ -79,6 +79,7 @@ saveArea(area) {
       leftHand: null,
       queue: [], nextActionTime: 0, target: null, dirty: false,
       lastEncounterTime: 0,
+      facing: 'north' // <--- INITIAL COMPASS ORIENTATION
     };  
     this.players.add(p);
     return p;
@@ -117,7 +118,8 @@ saveArea(area) {
       maxHp: 35,
       damage: [4,10], 
       range: 3,
-      nextActionTime: Date.now() + 1000
+      nextActionTime: Date.now() + 1000,
+      facing: 'south'
     };
 
     area.mobs.push(drone);
@@ -270,10 +272,20 @@ saveArea(area) {
     
     // Check if player's active firearm slot processes ammo resource values
     const rGun = p.rightHand;
-    const ammoHudText = (rGun && rGun.ammo !== undefined) ? ` [AMMO:${rGun.ammo}/${rGun.maxAmmo}]` : '';
+    const hasAmmo = rGun && rGun.ammo !== undefined;
+    const ammoHudText = hasAmmo ? ` AMMO:${rGun.ammo}/${rGun.maxAmmo} (Res:${rGun.reserveAmmo})` : '';
 
+    const compassIcon = (p.facing || 'north')[0].toUpperCase();
 
-    const infoFooterText = `\n\x1b[90m(${p.x},${p.y}) ${here ? here.name : ''}${enemyStatusText}${playerStatusText}  HP:${p.hp}/${p.maxHp}\x1b[0m`;
+    // ---- UPDATED FOOTER PANEL TEXT DISPLAY FRAME ----
+    // Embeds [DIR:N/S/E/W] right beside your map room names
+    const panelLine1 = `(${p.x},${p.y}) ${here ? here.name : 'Void'} [DIR:${compassIcon}]${enemyStatusText}${playerStatusText} HP:${p.hp}/${p.maxHp}`;
+
+    // Line 2 breaks directly beneath line 1, displaying your clip/reserve ammunition stats
+    const panelLine2 = hasAmmo ? `\n${ammoHudText}` : '';
+
+    // Wrap everything inside a clean tech-gray ANSI color sequence block
+    const infoFooterText = `\n\x1b[90m${panelLine1}${panelLine2}\x1b[0m`;
     
     this.send(p, mapGridText + infoFooterText);
   }
