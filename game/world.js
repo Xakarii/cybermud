@@ -79,7 +79,9 @@ saveArea(area) {
       leftHand: null,
       queue: [], nextActionTime: 0, target: null, dirty: false,
       lastEncounterTime: 0,
-      facing: 'north' // <--- INITIAL COMPASS ORIENTATION
+      facing: 'north', // <--- INITIAL COMPASS ORIENTATION
+      navTarget: null, // Will hold { x: X, y: Y } when active
+      isNavigating: false
     };  
     this.players.add(p);
     return p;

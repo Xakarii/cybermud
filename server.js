@@ -20,11 +20,14 @@ const server = http.createServer((req, res) => {
     res.end(data);
   });
 });
+
 // ---- Game world ----
 const world = new World();
 world.loadAreas(path.join(__dirname, 'data', 'areas'));
+
 // ---- WebSocket layer ----
 const wss = new WebSocketServer({ server });
+
 wss.on('connection', (ws) => {
   const player = world.createPlayer(ws);
   ws.send(JSON.stringify({ type: 'system', text: '\x1b[36m// NEURAL LINK ESTABLISHED //\x1b[0m' }));
@@ -46,6 +49,56 @@ wss.on('connection', (ws) => {
 // ---- Main game loop ----
 setInterval(() => {
   const now = Date.now();
+
+    // ---- NEW: BACKEND AUTOPLAY PATH ROUTER ----
+  world.players.forEach((p) => {
+    if (p.name && p.isNavigating && p.navTarget) {
+      // Stop moving if the player is currently stuck in an action lag queue frame
+      if (now < p.nextActionTime) return;
+
+      // Check if we arrived exactly at our goal destination coordinates
+      if (p.x === p.navTarget.x && p.y === p.navTarget.y) {
+        p.isNavigating = false;
+        p.navTarget = null;
+        world.send(p, `\x1b[32m[NAV] Waypoint reached successfully.\x1b[0m`);
+        p.dirty = true;
+        return;
+      }
+
+      // Compute heading directional steps toward the target coordinate
+      const dx = p.navTarget.x - p.x;
+      const dy = p.navTarget.y - p.y;
+      
+      const stepX = dx === 0 ? 0 : (dx > 0 ? 1 : -1);
+      const stepY = dy === 0 ? 0 : (dy > 0 ? 1 : -1);
+
+      // Verify if the next structural step is safe and open
+      const nextTile = world.tileAt(p.area, p.x + stepX, p.y + stepY);
+      
+      if (nextTile && !nextTile.blocked) {
+        // Synchronize our body facing direction to match where the navigation system is pulling us
+        if (stepX === 1) p.facing = 'east';
+        else if (stepX === -1) p.facing = 'west';
+        else if (stepY === 1) p.facing = 'south';
+        else if (stepY === -1) p.facing = 'north';
+
+        // Execute step
+        world.tryMove(p, stepX, stepY);
+        
+        // Apply short 200ms walking step lag intervals to prevent instant teleportation exploits
+        p.nextActionTime = now + 200; 
+      } else {
+        // Something solid hit, disengage navigation systems immediately
+        p.isNavigating = false;
+        p.navTarget = null;
+        world.send(p, `\x1b[31m[NAV] Autopilot aborted! Obstacle or map bounds blocking path.\x1b[0m`);
+        p.dirty = true;
+      }
+    }
+  });
+
+  // process any queued actions whose lag has expired
+  world.players.forEach((p) => world.processQueue(p, now));
   // process any queued actions whose lag has expired
   world.players.forEach((p) => world.processQueue(p, now));
   // resolve ongoing combat
