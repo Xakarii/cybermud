@@ -67,7 +67,7 @@ saveArea(area) {
       area: 'downtown', x: 2, y: 2,
       hp: 100, maxHp: 100,
       rightHand: { 
-        name: 'Militech pistol', 
+        name: 'Rusty old pistol', 
         dmg:[2,10], 
         aimLag: 300, 
         fireLag: 800, 
@@ -87,50 +87,58 @@ saveArea(area) {
     return p;
   }
 
-    // ---- random enemy encounters ----
+  // ---- random enemy encounters ----
   spawnEncounter(p, x, y) {
     const area = this.areas.get(p.area);
     if (!area) return;
 
-    // Ensure our mobs array is cleanly initialized first
     if (!area.mobs) area.mobs = [];
 
     // ---- DYNAMIC LOWEST ID CALCULATION ----
-    // 1. Gather all local ID integers currently assigned to living mobs in this area
     const activeMobIds = new Set(
       area.mobs.filter(m => m.hp > 0).map(m => m.mobId)
     );
 
-    // 2. Loop upwards from 1 until we find an ID integer that is not in use
     let assignedMobId = 1;
     while (activeMobIds.has(assignedMobId)) {
       assignedMobId++;
     }
-    // ----------------------------------------
 
-    const drone = {
-      id: nextId++, // Global network synchronization tracking ID
-      mobId: assignedMobId, // Lowest available display index (1, 2, 3...)
+    // Determine an adjacent spawn tile so they never drop straight onto your coordinate grid
+    let spawnX = p.x + 1;
+    let spawnY = p.y;
+    const testTile = this.tileAt(p.area, spawnX, spawnY);
+    if (!testTile || testTile.blocked) {
+      spawnX = p.x;
+      spawnY = p.y;
+    }
+
+    // ---- GENERALIZED ENEMY CONSTRUCTOR BLOCK ----
+    const enemy = {
+      id: nextId++, 
+      mobId: assignedMobId, 
       isMob: true,
-      name: 'Arasaka-Drone',
+      name: 'Rogue AI Drone',
       area: p.area,
-      x: p.x, 
-      y: p.y,
+      x: spawnX, 
+      y: spawnY,
       hp: 35,
       maxHp: 35,
-      damage: [4,10], 
+      damage: (4, 10), // <-- SWAP THESE PARENTHESIS TO SQUARE BRACKETS IN YOUR WRITER!
       range: 3,
       nextActionTime: Date.now() + 1000,
       facing: 'south',
-      hasAlertedTracking: false // <--- NEW: THROTTLE TOGGLE GUARD
+      hasAlertedTracking: false,
+      attackAction: 'whirs loudly and shoots you',
+      obstacleSound: 'clicking thrusters around the corner'
     };
 
-    area.mobs.push(drone);
+    area.mobs.push(enemy);
 
-    this.send(p, '\x1b[31m[WARNING] A security drone drops from a neon billboard, weapons armed!\x1b[0m');
+    this.send(p, `\x1b[31m[WARNING] A ${enemy.name} drops from a neon billboard, weapons armed!\x1b[0m`);
     
-    p.target = drone.id;
-    this.send(p, `\x1b[33mTarget locked onto ${drone.name} [Enemy: ${drone.mobId}].\x1b[0m`);
+    p.target = enemy.id;
+    this.send(p, `\x1b[33mTarget locked onto ${enemy.name} [Enemy: ${enemy.mobId}].\x1b[0m`);
 
     p.dirty = true;
   }
@@ -231,7 +239,7 @@ saveArea(area) {
   }
 
 
-  // ---- Fixed Viewport Render: Handles Stacking Multi-Occupancy ----
+  // ---- ASCII viewport render with Multi-Line Stacked HUD ----
   sendView(p) {
     const area = this.areas.get(p.area);
     if (!area) return;
@@ -268,19 +276,19 @@ saveArea(area) {
     // 3. Shared Occupancy Status Header
     const localMobs = (area.mobs || []).filter(m => m.x === p.x && m.y === p.y && m.hp > 0);
     const mobLabels = localMobs.map(m => `${m.name}(ID:${m.mobId})`).join(', ');
-    const enemyStatusText = mobLabels ? ` | HOSTILE HERE: ${mobLabels}` : '';
+    const enemyStatusText = mobLabels ? ` | HOSTILE: ${mobLabels}` : '';
 
     const otherPlayersHere = [...this.players].filter(o => o.area === p.area && o.x === p.x && o.y === p.y && o !== p && o.name);
     const playerLabels = otherPlayersHere.map(o => o.name).join(', ');
     const playerStatusText = playerLabels ? ` | Runners: ${playerLabels}` : '';
 
-    // Merge map array strings and console UI text block into one transmission
+    // Merge map array strings into the grid block
     const mapGridText = rows.join('\n');
     
     // Check if player's active firearm slot processes ammo resource values
     const rGun = p.rightHand;
     const hasAmmo = rGun && rGun.ammo !== undefined;
-    const ammoHudText = hasAmmo ? ` AMMO:${rGun.ammo}/${rGun.maxAmmo} (Res:${rGun.reserveAmmo})` : '';
+    const ammoHudText = hasAmmo ? `AMMO: ${rGun.ammo}/${rGun.maxAmmo} (Reserve: ${rGun.reserveAmmo})` : '';
 
     // Map your full internal string variables to tight, clear panel icons
     const facingIcons = {
@@ -291,95 +299,26 @@ saveArea(area) {
     };
     const compassIcon = facingIcons[p.facing || 'north'] || 'N';
 
-    // ---- MULTI-LINE FOOTER SEPARATION PANEL ----
-    // Ensure all critical hook signatures required by client.js reside securely on the first newline block boundary layer
-    const line1Content = `(${p.x},${p.y}) ${here ? here.name : ''} [DIR:${compassIcon}]${enemyStatusText}${playerStatusText} HP:${p.hp}/${p.maxHp}`;
-    const line2Content = hasAmmo ? `\n${ammoHudText}` : '';
+    // ---- VERTICALLY STACKED CYBERDECK METRICS INFOBAR ----
+    // Line 1: Coordinates and Current Facing Vector (Crucial for client.js match trigger)
+    const line1Nav = `(${p.x},${p.y}) facing: [${compassIcon}]`;
+    
+    // Line 2: Room Tracking Profile & Local Occupancy Lists
+    const line2Zone = `ZONE: ${here ? here.name : 'Unknown'}${enemyStatusText}${playerStatusText}`;
+    
+    // Line 3: Vital signs readout block (Contains 'HP:' to trigger client.js sorting)
+    const line3Vitals = `Vitals: HP:${p.hp}/${p.maxHp}`;
+    
+    // Line 4: Ammunition payload configurations
+    const line4Ammo = hasAmmo ? `\n${ammoHudText}` : '';
 
-    // Wrap the entire bundle block sequentially so regex scans catch signatures across execution cycles
-    const infoFooterText = `\n\x1b[90m${line1Content}${line2Content}\x1b[0m`;
+    // Wrap everything sequentially inside your clean tech-gray ANSI block wrapper
+    // The \n characters stack your data layers perfectly into vertical rows
+    const infoFooterText = `\n\x1b[90m${line1Nav}\n${line2Zone}\n${line3Vitals}${line4Ammo}\x1b[0m`;
     
     this.send(p, mapGridText + infoFooterText);
   }
 
-  
-
-  /*
-   // ---- Fixed Viewport Render: Handles Stacking Multi-Occupancy ----
-  sendView(p) {
-    const area = this.areas.get(p.area);
-    if (!area) return;
-
-    const R = 5; // radius -> 11x11 viewport
-    let rows = [];
-
-    for (let y = p.y - R; y <= p.y + R; y++) {
-      let row = '';
-      for (let x = p.x - R; x <= p.x + R; x++) {
-        
-        // 1. Check ALL entities present on this specific grid tile
-        const isMe = (x === p.x && y === p.y);
-        const otherPlayer = [...this.players].find(o => o.area === p.area && o.x === x && o.y === y && o !== p && o.name);
-        const activeMob = (area.mobs || []).find(m => m.x === x && m.y === y && m.hp > 0);
-
-        // 2. Strict Stacking Priority Matrix
-        // If YOU are on the tile, always draw '@' so you never lose your screen anchor.
-        // If you step OFF, the matrix automatically falls back to showing the Drone or Player underneath.
-        if (isMe) { 
-          row += '\x1b[93m@\x1b[0m'; 
-        } else if (activeMob) { 
-          row += '\x1b[38;5;196mD\x1b[0m'; // Red 'D' for Drone
-        } else if (otherPlayer) { 
-          row += '\x1b[91mP\x1b[0m';        // Red 'P' for Player
-        } else {
-          const t = area.tiles[`${x},${y}`];
-          row += t ? this._glyphColor(t.glyph) : ' ';
-        }
-      }
-      rows.push(row);
-    }
-
-    const here = area.tiles[`${p.x},${p.y}`];
-    
-    // 3. Shared Occupancy Status Header (Solves the "Invisible Drone" problem)
-    const localMobs = (area.mobs || []).filter(m => m.x === p.x && m.y === p.y && m.hp > 0);
-    const mobLabels = localMobs.map(m => `${m.name}(ID:${m.mobId})`).join(', ');
-    const enemyStatusText = mobLabels ? ` | HOSTILE HERE: ${mobLabels}` : '';
-
-    const otherPlayersHere = [...this.players].filter(o => o.area === p.area && o.x === p.x && o.y === p.y && o !== p && o.name);
-    const playerLabels = otherPlayersHere.map(o => o.name).join(', ');
-    const playerStatusText = playerLabels ? ` | Runners: ${playerLabels}` : '';
-
-    // Merge map array strings and console UI text block into one transmission
-    const mapGridText = rows.join('\n');
-    
-    // Check if player's active firearm slot processes ammo resource values
-    const rGun = p.rightHand;
-    const hasAmmo = rGun && rGun.ammo !== undefined;
-    const ammoHudText = hasAmmo ? ` AMMO:${rGun.ammo}/${rGun.maxAmmo} (Res:${rGun.reserveAmmo})` : '';
-
- // Map your full internal string variables to tight, clear panel icons
-    const facingIcons = {
-      north: 'N', south: 'S', east: 'E', west: 'W',
-      n: 'N', s: 'S', e: 'E', w: 'W',
-      northeast: 'NE', northwest: 'NW', southeast: 'SE', southwest: 'SW',
-      ne: 'NE', nw: 'NW', se: 'SE', sw: 'SW' // <-- Added abbreviation safety shields
-    };
-    const compassIcon = facingIcons[p.facing || 'north'] || 'N';
-
-    // ---- UPDATED FOOTER PANEL TEXT DISPLAY FRAME ----
-    // Draws tight headers like [DIR:NW] right alongside your health stats
-    const panelLine1 = `(${p.x},${p.y}) ${here ? here.name : ''} [DIR:${compassIcon}]${enemyStatusText}${playerStatusText} HP:${p.hp}/${p.maxHp}`;
-    // Line 2 breaks directly beneath line 1, displaying your clip/reserve ammunition stats
-    const panelLine2 = hasAmmo ? `\n${ammoHudText}` : '';
-
-    // Wrap everything inside a clean tech-gray ANSI color sequence block
-    const infoFooterText = `\n\x1b[90m${panelLine1}${panelLine2}\x1b[0m`;
-    
-    this.send(p, mapGridText + infoFooterText);
-  }
-
-  */
   
  _glyphColor(g) {
     if (g === '#') return '\x1b[38;5;242m\x1b[48;5;234m#\x1b[0m'; // Sleek dark corporate walls

@@ -74,143 +74,135 @@ export function tickCombat(world, now) {
   for (const [areaName, area] of world.areas.entries()) {
     if (!area.mobs || area.mobs.length === 0) continue;
 
-    // Filter to find active drones whose turn timer has popped
-    const activeDrones = area.mobs.filter(m => m.hp > 0 && now >= m.nextActionTime);
+    // Filter to find active enemies whose turn timer has popped
+    const activeEnemies = area.mobs.filter(m => m.hp > 0 && now >= m.nextActionTime);
 
-    for (const drone of activeDrones) {
-      if (drone.hp <= 0) continue;
+    for (const enemy of activeEnemies) {
+      if (enemy.hp <= 0) continue;
 
       // Find the closest active target player in the area
-      const targetPlayer = [...world.players].find(p => p.area === drone.area && p.hp > 0 && p.name);
+      const targetPlayer = [...world.players].find(p => p.area === enemy.area && p.hp > 0 && p.name);
 
       if (targetPlayer) {
-        const dx = targetPlayer.x - drone.x;
-        const dy = targetPlayer.y - drone.y;
+        const dx = targetPlayer.x - enemy.x;
+        const dy = targetPlayer.y - enemy.y;
         const dist = Math.max(Math.abs(dx), Math.abs(dy));
-        const attackRange = drone.range || 3;
+        const attackRange = enemy.range || 3;
 
         // Run our Line of Sight Raycaster
-        const canSeePlayer = hasLineOfSight(world, drone.area, drone.x, drone.y, targetPlayer.x, targetPlayer.y);
+        const canSeePlayer = hasLineOfSight(world, enemy.area, enemy.x, enemy.y, targetPlayer.x, targetPlayer.y);
 
         if (canSeePlayer && dist <= attackRange) {
-          // ---- CHOICE A: IN RANGE & HAS LINE OF SIGHT -> SHOOT! ----
-          const minDmg = drone.damage[0] || 6;
-          const maxDmg = drone.damage[1] || 12;
+          // ---- CHOICE A: IN RANGE & HAS LINE OF SIGHT -> EXECUTE ENEMY ATTACK ----
+          const minDmg = enemy.damage[0] || 6; 
+          const maxDmg = enemy.damage[1] || 12;
           const dmg = minDmg + Math.floor(Math.random() * (maxDmg - minDmg + 1));
 
           targetPlayer.hp -= dmg;
-          world.send(targetPlayer, `\x1b[91mThe Arasaka-Drone whirs loudly and shoots you from ${dist} tiles away for ${dmg} damage!\x1b[0m`);
+          
+          // Extract abstract behavioral descriptions from the enemy object attributes
+          const actionDescription = enemy.attackAction || 'whirs loudly and shoots you';
+          
+          world.send(targetPlayer, `\x1b[91mThe ${enemy.name} ${actionDescription} from ${dist} tiles away for ${dmg} damage!\x1b[0m`);
+          
           targetPlayer.dirty = true;
-          drone.nextActionTime = now + 1500;
+          enemy.nextActionTime = now + 1500;
 
           if (targetPlayer.hp <= 0) {
-            world.broadcastArea(targetPlayer.area, 0, 0, `\x1b[95m${targetPlayer.name} was flatlined by an Arasaka-Drone.\x1b[0m`);
+            world.broadcastArea(targetPlayer.area, 0, 0, `\x1b[95m${targetPlayer.name} was flatlined by a ${enemy.name}.\x1b[0m`);
             targetPlayer.hp = targetPlayer.maxHp;
             targetPlayer.x = 2; targetPlayer.y = 2; targetPlayer.target = null; targetPlayer.queue = [];
             world.send(targetPlayer, `\x1b[31m[CRITICAL] System failure. Rebooting vital matrices... Spawning at Safehouse.\x1b[0m`);
-            drone.hp = 0;
+            enemy.hp = 0;
           }
         } 
         else if (canSeePlayer && dist > attackRange) {
-          // ---- CHOICE B: SEES PLAYER BUT TOO FAR -> ADVANCE DIRECTLY ----
+          // ---- CHOICE B: SEES PLAYER BUT TOO FAR -> ADVANCE SILENTLY ----
           const stepX = dx === 0 ? 0 : (dx > 0 ? 1 : -1);
           const stepY = dy === 0 ? 0 : (dy > 0 ? 1 : -1);
-          const nextX = drone.x + stepX;
-          const nextY = drone.y + stepY;
+          const nextX = enemy.x + stepX;
+          const nextY = enemy.y + stepY;
 
-          const targetTile = world.tileAt(drone.area, nextX, nextY);
+          const targetTile = world.tileAt(enemy.area, nextX, nextY);
           if (targetTile && !targetTile.blocked) {
-            drone.x = nextX;
-            drone.y = nextY;
+            enemy.x = nextX;
+            enemy.y = nextY;
             targetPlayer.dirty = true;
           }
-          drone.nextActionTime = now + 700;
+          
+          enemy.hasAlertedTracking = false; // Reset warning toggle since sight is regained
+          enemy.nextActionTime = now + 700;
         } 
         else {
           // ---- CHOICE C: LINE OF SIGHT BROKEN -> PURSUE CORNER BREADCRUMBS ----
           const currentTrail = [...targetPlayer.trail];
 
-          // Look for the absolute NEWEST trail node the drone can see (to establish pursuit vector)
+          // Look for the absolute newest visible step left by the player
           const newestVisibleStep = [...currentTrail].reverse().find(step => 
-            hasLineOfSight(world, drone.area, drone.x, drone.y, step.x, step.y)
+            hasLineOfSight(world, enemy.area, enemy.x, enemy.y, step.x, step.y)
           );
 
-          // SAFEGUARD: Track if that matched step is the coordinate the drone is currently standing on
-          const droneIsOnMatchedScent = newestVisibleStep && (newestVisibleStep.x === drone.x && newestVisibleStep.y === drone.y);
-
-          // Initialize our tracking target pointer coordinate variable
+          const enemyIsOnMatchedScent = newestVisibleStep && (newestVisibleStep.x === enemy.x && newestVisibleStep.y === enemy.y);
           let chaseTarget = null;
 
-          if (newestVisibleStep && !droneIsOnMatchedScent) {
-            // If the drone sees a step ahead of it, chase it directly
+          if (newestVisibleStep && !enemyIsOnMatchedScent) {
             chaseTarget = newestVisibleStep;
           } 
-          else if (newestVisibleStep && droneIsOnMatchedScent) {
-            // CORE CORNER CORRECTION FIX: If the drone is sitting precisely on your scent node, 
-            // search chronologically (OLDEST to NEWEST) for the next node it can see.
+          else if (newestVisibleStep && enemyIsOnMatchedScent) {
+            // Corner Correction Lookup
             chaseTarget = currentTrail.find(step => 
-              (step.x !== drone.x || step.y !== drone.y) && 
-              hasLineOfSight(world, drone.area, drone.x, drone.y, step.x, step.y)
+              (step.x !== enemy.x || step.y !== enemy.y) && 
+              hasLineOfSight(world, enemy.area, enemy.x, enemy.y, step.x, step.y)
             );
           }
 
           // ---- EXECUTE DYNAMIC CORNER MOVEMENT STEP ----
           if (chaseTarget) {
-            const chaseDx = chaseTarget.x - drone.x;
-            const chaseDy = chaseTarget.y - drone.y;
+            const chaseDx = chaseTarget.x - enemy.x;
+            const chaseDy = chaseTarget.y - enemy.y;
             
             const stepX = chaseDx === 0 ? 0 : (chaseDx > 0 ? 1 : -1);
             const stepY = chaseDy === 0 ? 0 : (chaseDy > 0 ? 1 : -1);
             
-            const nextX = drone.x + stepX;
-            const nextY = drone.y + stepY;
+            const nextX = enemy.x + stepX;
+            const nextY = enemy.y + stepY;
 
-            const targetTile = world.tileAt(drone.area, nextX, nextY);
+            const targetTile = world.tileAt(enemy.area, nextX, nextY);
             if (targetTile && !targetTile.blocked) {
-              drone.x = nextX;
-              drone.y = nextY;
-              world.send(targetPlayer, `\x1b[90mYou hear clicking thrusters around the corner... The drone is tracking your footprints.\x1b[0m`);
+              enemy.x = nextX;
+              enemy.y = nextY;
+              
+              // Extract abstract narrative audio tracking description
+              if (!enemy.hasAlertedTracking) {
+                const soundDescription = enemy.obstacleSound || 'clicking thrusters around the corner';
+                world.send(targetPlayer, `\x1b[90mYou hear ${soundDescription}... The ${enemy.name} is tracking your footprints.\x1b[0m`);
+                enemy.hasAlertedTracking = true; 
+              }
+              
               targetPlayer.dirty = true;
             }
-
-            if (!drone.hasAlertedTracking) {
-              world.send(targetPlayer, `\x1b[90mYou hear clicking thrusters around the corner... The drone is tracking your footprints.\x1b[0m`);
-              drone.hasAlertedTracking = true; // Flips safety gate locked
-            }
-            drone.nextActionTime = now + 650; 
+            enemy.nextActionTime = now + 650; 
           } else {
             // ---- CHOICE D: LOST THE TRAIL ENTIRELY -> DESPAWN ----
-            world.send(targetPlayer, `\x1b[32mThe Arasaka-Drone loses your biological signature and terminates search vectors. [Despawned]\x1b[0m`);
+            world.send(targetPlayer, `\x1b[32mThe ${enemy.name} loses your biological signature and terminates search vectors. [Despawned]\x1b[0m`);
             
-            if (targetPlayer.target === drone.id) {
+            if (targetPlayer.target === enemy.id) {
               targetPlayer.target = null;
             }
             
-            drone.hp = 0; 
+            enemy.hp = 0; 
             targetPlayer.dirty = true;
-          }
-          // SAFEGUARD: Don't chase footprints if the user has sprinted too far away
-          const targetDist = Math.max(Math.abs(targetPlayer.x - drone.x), Math.abs(targetPlayer.y - drone.y));
-          
-          if (targetDist > 5) { // If player is further than 5 tiles away from the drone around corners, break tracking
-            world.send(targetPlayer, `\x1b[32mYou managed to slip away into the neon haze. The Arasaka-Drone loses your trail. [Despawned]\x1b[0m`);
-            if (targetPlayer.target === drone.id) targetPlayer.target = null;
-            drone.hp = 0;
-            targetPlayer.dirty = true;
-            continue;
           }
         }
-      
       } // Ends "if (targetPlayer)"
       else {
-        // Safe tracking rate fallback if player disconnects mid-chase
-        drone.nextActionTime = now + 500;
+        enemy.nextActionTime = now + 500;
       }
-    } // Ends "for (drone of activeDrones)"
+    } // Ends "for (enemy of activeEnemies)"
 
-    // Safely purge flatlined or lost/despawned drones out of memory arrays
+    // Purge dead enemies out of the active registry loop
     area.mobs = area.mobs.filter(m => m.hp > 0);
-  } // Ends "for (area of world.areas)"
+  }
 }
 
 

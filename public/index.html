@@ -40,6 +40,9 @@
     line-height: 1.2;
     background: #0a0a0f;
     overflow: hidden;
+    box-sizing: border-box;  /* Ensures padding doesn't push width to 404px */
+    text-overflow: ellipsis; /* Appends "..." if any text overflows the 380px mark */
+    max-width: 380px;        /* Strict hard physical layout stop */
   }
 
    /* Right Side: Scrollable text logs screen channel console log */
@@ -53,16 +56,7 @@
     font-size: 14px; 
     line-height: 1.3; 
   }
-  /* Old screen   Right Side: Scrollable text logs screen channel console log
-  #screen { 
-    flex: 1;
-    padding: 12px; 
-    overflow-y: auto; 
-    white-space: pre-wrap; /* Allows long global logs messages to wrap nicely 
-    font-size: 14px; 
-    line-height: 1.3; 
-  }
-  */
+
 
   #screen::-webkit-scrollbar { width: 8px; } 
   #screen::-webkit-scrollbar-thumb { background: #ff2f8e; }
@@ -96,35 +90,3 @@
 </body>
 </html>
 
-
-
-<!-- old index.html, replaced 8/2/26
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<title>cyberMUD // Night City</title>
-<style>
-  html, body { margin: 0; height: 100%; background: #0a0a0f; color: #c8f7ff; font-family: 'Courier New', monospace; }
-  #screen { height: calc(100vh - 44px); padding: 8px; overflow-y: auto; white-space: pre; font-size: 14px; line-height: 1.15; }
-  #screen::-webkit-scrollbar { width: 8px; } #screen::-webkit-scrollbar-thumb { background: #ff2f8e; }
-  #bar { display: flex; height: 36px; border-top: 1px solid #ff2f8e; }
-  #prompt { color: #ff2f8e; padding: 0 8px; line-height: 36px; }
-  #input { flex: 1; background: #05050a; color: #7fffd4; border: none; outline: none; font-family: inherit; font-size: 14px; }
-</style>
-</head>
-<body>
-  new style code, prevents screen flickering
-  <div id="wrapper" style="display: flex; height: calc(100vh - 44px);">
-  Left Side: Live rendering map viewport pane (no scrollbars)
-  <div id="map-viewport" style="width: 250px; border-right: 1px solid #ff2f8e; padding: 8px; font-family: monospace; white-space: pre;"></div>
-  Right Side: Standard text chat channel stream log
-  <div id="screen" style="flex: 1; padding: 8px; overflow-y: auto;"></div>
-  </div>
-  end new style code
-  <div id="screen"></div>
-  <div id="bar"><span id="prompt">▶</span><input id="input" autocomplete="off" autofocus /></div>
-  <script src="client.js"></script>
-</body>
-</html>
--->
