@@ -77,10 +77,15 @@ setInterval(() => {
       
       if (nextTile && !nextTile.blocked) {
         // Synchronize our body facing direction to match where the navigation system is pulling us
-        if (stepX === 1) p.facing = 'east';
+        if (stepX === 1 && stepY === -1) p.facing = 'northeast';
+        else if (stepX === -1 && stepY === -1) p.facing = 'northwest';
+        else if (stepX === 1 && stepY === 1) p.facing = 'southeast';
+        else if (stepX === -1 && stepY === 1) p.facing = 'southwest';
+        else if (stepX === 1) p.facing = 'east';
         else if (stepX === -1) p.facing = 'west';
         else if (stepY === 1) p.facing = 'south';
         else if (stepY === -1) p.facing = 'north';
+
 
         // Execute step
         world.tryMove(p, stepX, stepY);

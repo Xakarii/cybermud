@@ -6,15 +6,23 @@ const COMPASS = {
   n: { dir: 'north', dx: 0, dy: -1 },
   s: { dir: 'south', dx: 0, dy: 1 },
   e: { dir: 'east',  dx: 1, dy: 0 },
-  w: { dir: 'west',  dx: -1, dy: 0 }
+  w: { dir: 'west',  dx: -1, dy: 0 },
+  ne: { dir: 'northeast', dx: 1,  dy: -1 },
+  nw: { dir: 'northwest', dx: -1, dy: -1 },
+  se: { dir: 'southeast', dx: 1,  dy: 1  },
+  sw: { dir: 'southwest', dx: -1, dy: 1  }
 };
 
 // Relative Translation Matrices fixed to map true vector angles
 const RELATIVE_STEERING = {
-  north: { ff: [0, -1], fb:[0, 1],  fl: [-1, 0], fr: [1, 0]  },
-  south: { ff: [0, 1],  fb:[0, -1], fl:[1, 0],  fr: [-1, 0] },  ///
-  east:  { ff: [1, 0],  fb: [-1, 0], fl: [0, -1], fr: [0, 1]  },
-  west:  { ff: [-1, 0], fb:[1, 0],  fl:[0, 1],  fr: [0, -1] }
+  north:     { ff: [0, -1],  fb:[0, 1],    fl: [-1, 0],  fr: [1, 0]   },
+  south:     { ff: [0, 1],   fb:[0, -1],   fl:[1, 0],    fr: [-1, 0]  },  
+  east:      { ff: [1, 0],   fb: [-1, 0],  fl: [0, -1],  fr: [0, 1]   },
+  west:      { ff: [-1, 0],  fb:[1, 0],    fl:[0, 1],    fr: [0, -1]  },
+  northeast: { ff: [1, -1],  fb: [-1, 1],  fl: [-1, -1], fr: [1, 1]   },
+  northwest: { ff: [-1, -1], fb:[1, 1],    fl: [1, -1],  fr: [-1, 1]  },
+  southeast: { ff: [1, 1],   fb: [-1, -1], fl: [-1, 1],  fr: [1, -1]  },
+  southwest: { ff: [-1, 1],  fb:[1, -1],   fl:[1, 1],    fr: [-1, -1]  }
 };
 
 export function handleCommand(world, p, line) {
@@ -22,31 +30,58 @@ export function handleCommand(world, p, line) {
   const cmd = (parts[0] || '').toLowerCase();
   const arg = parts.slice(1).join(' ');
 
-// ---- A) ABSOLUTE COMPASS MOVEMENT (Turns player first, then walks) ----
+// ---- 1. MANUAL STOP COMMAND BRAKE ----
+  if (cmd === 'stop' || cmd === 'abort' || cmd === 'x') {
+    if (p.isNavigating || p.navTarget) {
+      p.isNavigating = false;
+      p.navTarget = null;
+      return world.send(p, `\x1b[31m[NAV] Autopilot brakes locked. Route aborted.\x1b[0m`);
+    }
+    return world.send(p, `\x1b[33mYou aren't currently navigating anywhere.\x1b[0m`);
+  }
+
+ // ---- 2. DYNAMIC COMPASS MOVEMENT & INSTANT VECTOR REROUTING ----
   if (COMPASS[cmd]) {
     const turn = COMPASS[cmd];
     const distanceInput = parseInt(parts[1], 10);
 
-    world.queueAction(p, () => {
-      // Clear any old active navigation states
-      p.navTarget = null;
-      p.isNavigating = false;
+    // Check if they provided a distance parameter modifier (e.g., "n 10")
+    if (!Number.isNaN(distanceInput) && distanceInput > 0) {
+      
+      // ---- NEW INSTANT OVERRIDE BRAKE ----
+      // Wipe out any old queued movement actions stuck waiting in the pipeline line
+      p.queue = []; 
 
-      if (p.facing !== turn.dir) {
+      // Pull your current coordinates as the absolute baseline point
+      const basePointX = p.x;
+      const basePointY = p.y;
+
+      const destX = basePointX + (turn.dx * distanceInput);
+      const destY = basePointY + (turn.dy * distanceInput);
+      
+      // Pivot body focus to face the new immediate steering angle
+      if (!cmd.match(/^(ne|nw|se|sw)$/)) {
         p.facing = turn.dir;
         world.send(p, `\x1b[36mYou pivot to face ${p.facing}.\x1b[0m`);
       }
 
-      // If they typed a relative distance (e.g., "s 10")
-      if (!Number.isNaN(distanceInput) && distanceInput > 0) {
-        const destX = p.x + (turn.dx * distanceInput);
-        const destY = p.y + (turn.dy * distanceInput);
-        p.navTarget = { x: destX, y: destY };
-        world.send(p, `\x1b[33mNavigation point locked: (${destX}, ${destY}). Type 'ff' to engage autoplay.\x1b[0m`);
-      } else {
-        // Normal single step fallback
-        world.tryMove(p, turn.dx, turn.dy);
+      // Overwrite target tracking properties and activate the engine IMMEDIATELY
+      p.navTarget = { x: destX, y: destY };
+      p.isNavigating = true; 
+
+      world.send(p, `\x1b[35m[NAV] Redirection override received! Autopilot instantly shifting to: (${destX}, ${destY})...\x1b[0m`);
+      return; // Breaks execution track out here instantly, bypassing the queue wrapper entirely!
+    }
+
+    // NORMAL MANUAL STEP FALLBACK: (Stays inside the standard action lag queue timeline)
+    world.queueAction(p, () => {
+      if (p.facing !== turn.dir && !cmd.match(/^(ne|nw|se|sw)$/)) {
+        p.facing = turn.dir;
+        world.send(p, `\x1b[36mYou pivot to face ${p.facing}.\x1b[0m`);
       }
+      p.navTarget = null;
+      p.isNavigating = false;
+      world.tryMove(p, turn.dx, turn.dy);
     }, 200);
     return;
   }
