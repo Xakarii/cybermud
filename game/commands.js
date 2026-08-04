@@ -40,42 +40,35 @@ export function handleCommand(world, p, line) {
     return world.send(p, `\x1b[33mYou aren't currently navigating anywhere.\x1b[0m`);
   }
 
- // ---- 2. DYNAMIC COMPASS MOVEMENT & INSTANT VECTOR REROUTING ----
+  // ---- 2. DYNAMIC COMPASS MOVEMENT & INSTANT VECTOR REROUTING ---
   if (COMPASS[cmd]) {
     const turn = COMPASS[cmd];
-    const distanceInput = parseInt(parts[1], 10);
+    const distanceInput = parseInt(parts, 10);
 
-    // Check if they provided a distance parameter modifier (e.g., "n 10")
+    // Case A: Long Distance Autopilot Macro (e.g., "ne 10")
     if (!Number.isNaN(distanceInput) && distanceInput > 0) {
-      
-      // ---- NEW INSTANT OVERRIDE BRAKE ----
-      // Wipe out any old queued movement actions stuck waiting in the pipeline line
-      p.queue = []; 
+      p.queue = []; // Wipe out old queued commands instantly
 
-      // Pull your current coordinates as the absolute baseline point
       const basePointX = p.x;
       const basePointY = p.y;
 
       const destX = basePointX + (turn.dx * distanceInput);
       const destY = basePointY + (turn.dy * distanceInput);
       
-      // Pivot body focus to face the new immediate steering angle
-      if (!cmd.match(/^(ne|nw|se|sw)$/)) {
-        p.facing = turn.dir;
-        world.send(p, `\x1b[36mYou pivot to face ${p.facing}.\x1b[0m`);
-      }
+      // Update heading state immediately for ALL directional types
+      p.facing = turn.dir;
 
-      // Overwrite target tracking properties and activate the engine IMMEDIATELY
       p.navTarget = { x: destX, y: destY };
       p.isNavigating = true; 
 
-      world.send(p, `\x1b[35m[NAV] Redirection override received! Autopilot instantly shifting to: (${destX}, ${destY})...\x1b[0m`);
-      return; // Breaks execution track out here instantly, bypassing the queue wrapper entirely!
+      world.send(p, `\x1b[35m[NAV] Rerouting immediately! Autopilot vector shifted to: (${destX}, ${destY})...\x1b[0m`);
+      return; 
     }
 
-    // NORMAL MANUAL STEP FALLBACK: (Stays inside the standard action lag queue timeline)
+    // Case B: NORMAL MANUAL STEP FALLBACK (e.g., typing just "ne")
     world.queueAction(p, () => {
-      if (p.facing !== turn.dir && !cmd.match(/^(ne|nw|se|sw)$/)) {
+      // FIX: Force p.facing to ALWAYS update to the step direction, including diagonals!
+      if (p.facing !== turn.dir) {
         p.facing = turn.dir;
         world.send(p, `\x1b[36mYou pivot to face ${p.facing}.\x1b[0m`);
       }
@@ -110,6 +103,16 @@ export function handleCommand(world, p, line) {
   }
 
   // ---- combat ----
+   // ---- disable combat on Hub 'H' tiles ----
+  if (cmd === 'ra' || cmd === 'rf' || cmd === 'la' || cmd === 'lf') { 
+    // Query the map data beneath the player's feet
+    const currentTile = world.tileAt(p.area, p.x, p.y);
+    
+    if (currentTile && currentTile.glyph === 'H') {
+      p.target = null; // Instantly drop tracking locks for safety
+      return world.send(p, `\x1b[31m[SAFE ZONE] Neural weapons override active. Firepower de-authorized inside the Safehouse.\x1b[0m`);
+    }
+
   if (cmd === 'ra' || cmd === 'rf') { 
     if (cmd === 'ra' || arg.includes('r')) {
       world.queueAction(p, () => aimHand(world, p, 'rightHand'), p.rightHand?.aimLag || 300);
@@ -119,6 +122,8 @@ export function handleCommand(world, p, line) {
     }
     return;
   }
+}
+
 
   if (cmd === 'la' || cmd === 'lf') {
     if (cmd === 'la' || arg.includes('l')) {

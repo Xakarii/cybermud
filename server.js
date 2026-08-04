@@ -50,6 +50,29 @@ wss.on('connection', (ws) => {
 setInterval(() => {
   const now = Date.now();
 
+
+
+  // Track tick cycles inside the scope to clock down health pulses cleanly
+  if (!global.regenTickCounter) global.regenTickCounter = 0;
+  global.regenTickCounter++;
+
+  // ---- NEW: NEURAL PATCH HEALTH REGENERATION ----
+  // Runs a health tick pulse once every 500ms (Every 5 engine cycles)
+  if (global.regenTickCounter % 5 === 0) {
+    world.players.forEach((p) => {
+      if (p.name && p.hp > 0 && p.hp < p.maxHp) {
+        const localTile = world.tileAt(p.area, p.x, p.y);
+        
+        // If standing on the safe house enclave tile
+        if (localTile && localTile.glyph === 'H') {
+          p.hp = Math.min(p.maxHp, p.hp + 1); // Restore 1 HP up to their max limit
+          world.send(p, `\x1b[32m[SYSTEM] Safehouse medical injectors pulsing... Vital signs recovering. (HP: ${p.hp}/${p.maxHp})\x1b[0m`);
+          p.dirty = true; // Refresh dashboard to show health increase
+        }
+      }
+    });
+  }
+
     // ---- NEW: BACKEND AUTOPLAY PATH ROUTER ----
   world.players.forEach((p) => {
     if (p.name && p.isNavigating && p.navTarget) {

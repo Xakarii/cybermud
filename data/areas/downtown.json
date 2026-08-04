@@ -1768,28 +1768,28 @@
       "blocked": true
     },
     "14,7": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "A towering corporate barrier made of dark glass.",
-      "blocked": true
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Dimly lit streets smelling of ozone.",
+      "blocked": false
     },
     "15,7": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "A towering corporate barrier made of dark glass.",
-      "blocked": true
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Dimly lit streets smelling of ozone.",
+      "blocked": false
     },
     "16,7": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "A towering corporate barrier made of dark glass.",
-      "blocked": true
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Dimly lit streets smelling of ozone.",
+      "blocked": false
     },
     "17,7": {
-      "glyph": "#",
-      "name": "Chrome wall",
-      "desc": "A towering corporate barrier made of dark glass.",
-      "blocked": true
+      "glyph": ".",
+      "name": "Cracked asphalt",
+      "desc": "Dimly lit streets smelling of ozone.",
+      "blocked": false
     },
     "18,7": {
       "glyph": "#",
