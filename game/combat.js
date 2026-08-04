@@ -122,7 +122,6 @@ export function tickCombat(world, now) {
           if (targetTile && !targetTile.blocked) {
             drone.x = nextX;
             drone.y = nextY;
-            world.send(targetPlayer, `\x1b[90mThe Arasaka-Drone advances on your position... (${drone.x}, ${drone.y})\x1b[0m`);
             targetPlayer.dirty = true;
           }
           drone.nextActionTime = now + 700;
@@ -172,6 +171,11 @@ export function tickCombat(world, now) {
               drone.y = nextY;
               world.send(targetPlayer, `\x1b[90mYou hear clicking thrusters around the corner... The drone is tracking your footprints.\x1b[0m`);
               targetPlayer.dirty = true;
+            }
+
+            if (!drone.hasAlertedTracking) {
+              world.send(targetPlayer, `\x1b[90mYou hear clicking thrusters around the corner... The drone is tracking your footprints.\x1b[0m`);
+              drone.hasAlertedTracking = true; // Flips safety gate locked
             }
             drone.nextActionTime = now + 650; 
           } else {

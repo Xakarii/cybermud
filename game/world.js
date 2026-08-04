@@ -121,7 +121,8 @@ saveArea(area) {
       damage: [4,10], 
       range: 3,
       nextActionTime: Date.now() + 1000,
-      facing: 'south'
+      facing: 'south',
+      hasAlertedTracking: false // <--- NEW: THROTTLE TOGGLE GUARD
     };
 
     area.mobs.push(drone);
